@@ -1,5 +1,19 @@
 # AngularSrc
 
+## …or create a new repository on the command line
+
+echo "# devcamperui" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/zAhmedAly/devcamperui.git
+git push -u origin master
+
+## …or push an existing repository from the command line
+
+git remote add origin https://github.com/zAhmedAly/devcamperui.git
+git push -u origin master
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
 ## Development server
