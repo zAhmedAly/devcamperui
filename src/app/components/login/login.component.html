@@ -1,0 +1,95 @@
+<!-- Login -->
+<div class="container">
+  <section class="showcase my-3">
+    <div class="dark-overlay">
+      <div class="showcase-inner ">
+        <h4><i class="fa fa-users" aria-hidden="true"></i> User Login</h4>
+        <p>
+          Log in to list your bootcamp or rate, review and favorite bootcamps
+        </p>
+        <form class="form-signin" (submit)="onLoginSubmit()">
+          <div class="form-group">
+            <label for="email">Username</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="user@example.com"
+              [(ngModel)]="email"
+              name="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="Password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder=" Enter Password"
+              [(ngModel)]="password"
+              name="password"
+            />
+          </div>
+          <!-- <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter email"
+            required
+          />
+        </div> -->
+
+          <div class="form-group">
+            <input
+              type="submit"
+              value="Login"
+              class="btn btn-primary btn-block"
+            />
+          </div>
+        </form>
+        <p>
+          Forgot Password?
+          <a href="reset-password.html"> Reset Password</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- <section class="showcase my-3">
+  <div class="dark-overlay">
+    <div class="showcase-inner container">
+      <h4 class="page-header">
+        <i class="fa fa-users" aria-hidden="true"></i> User Login
+      </h4>
+      <form class="form-signin" (submit)="onLoginSubmit()">
+        <div class="form-group">
+          <label for="email">email</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter email"
+            [(ngModel)]="email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder=" Enter Password"
+            [(ngModel)]="password"
+            name="password"
+          />
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+          </label>
+        </div>
+        <input class="btn btn-primary mt-2" type="submit" value="Login" />
+      </form>
+    </div>
+  </div>
+</section> -->

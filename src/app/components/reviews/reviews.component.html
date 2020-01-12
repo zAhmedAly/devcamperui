@@ -1,0 +1,85 @@
+<section class="bootcamp" *ngIf="bootcampName">
+  <!-- <div class="container"> -->
+  <div class="row">
+    <!-- Main col -->
+    <div class="col-md-8">
+      <a [routerLink]="['/list-bootcamp', bootcampId]" class="btn btn-link mb-4"
+        ><i class="fa fa-chevron-left mr-2"></i>Bootcamp Info</a
+      >
+
+      <h4 class="mb-4 text-dark">{{ bootcampName }} Reviews</h4>
+      <!-- Reviews -->
+      <div class="card mb-3" *ngFor="let review of reviews">
+        <h5 class="card-header bg-primary text-white">
+          {{ review.title }}
+
+          <a
+            *ngIf="loggedInUserId === review.user._id"
+            href="#"
+            target="_blank"
+            class="float-right text-white"
+            style="margin-left: 2rem;"
+          >
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+          <a
+            *ngIf="loggedInUserId === review.user._id"
+            [routerLink]="['/upd-review', bootcampId]"
+            routerLinkActive="router-link-active"
+            class="float-right text-white"
+          >
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">
+            Rating: <span class="text-success">{{ review.rating }}</span>
+          </h5>
+          <p class="card-text">
+            {{ review.text }}
+          </p>
+          <p class="text-muted">Writtern By {{ review.user.name }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <!-- Image -->
+      <img
+        src="../../../../assets/img/image_1.jpg"
+        class="img-thumbnail"
+        alt=""
+      />
+      <!-- Rating -->
+      <!-- Rating -->
+      <h4 class="text-center my-2">
+        <span
+          class="badge badge-secondary badge-success  rounded-circle p-2 mr-2"
+          >{{ averageRating || No }}
+        </span>
+        Rating
+      </h4>
+
+      <!-- <h4 class="text-center my-2">
+        <span class="badge badge-secondary badge-success rounded-circle p-3">{{
+          averageRating || 'No'
+        }}</span>
+        Rating
+      </h4> -->
+      <!-- Buttons -->
+      <a
+        *ngIf="reviewEnabled"
+        [routerLink]="['/add-review', bootcampId]"
+        class="btn btn-success btn-block my-3"
+        ><i class="fas fa-pencil-alt"></i> Review This Bootcamp</a
+      >
+      <a
+        *ngIf="!reviewEnabled"
+        [routerLink]="['/add-review', bootcampId]"
+        class="btn btn-success btn-block my-3 disabled"
+        ><i class="fas fa-pencil-alt"></i> You already reviewed this bootcamp</a
+      >
+    </div>
+  </div>
+  <!-- </div> -->
+</section>
