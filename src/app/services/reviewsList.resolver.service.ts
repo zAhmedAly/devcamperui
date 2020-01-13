@@ -1,7 +1,7 @@
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of, empty } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 import { ReviewsService } from './reviews.service';
 
 @Injectable()
@@ -25,11 +25,10 @@ export class ReviewsListResolverService implements Resolve<[any] | string> {
     // );
     return this.reviewsService
       .getReviews(route.paramMap.get('bootcampId'))
-      .pipe(catchError((err: string) => of(err)));
-    // .pipe(
-    //   catchError(() => {
-    //     return empty();
-    //   })
-    // );
+      .pipe(
+        delay(1000),
+        catchError((err: string) => of(err).pipe(delay(1000)))
+      );
+    // .pipe(catchError(() => empty()))
   }
 }

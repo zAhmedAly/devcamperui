@@ -1,7 +1,7 @@
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of, empty } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 import { BootcampsService } from './bootcamps.service';
 
 @Injectable()
@@ -25,7 +25,10 @@ export class BootcampResolverService implements Resolve<any | string> {
     // );
     return this.bootcampsService
       .getBootcamp(route.paramMap.get('bootcampId'))
-      .pipe(catchError((err: string) => of(err)));
+      .pipe(
+        delay(1000),
+        catchError((err: string) => of(err).pipe(delay(1000)))
+      );
     // .pipe(
     //   catchError(() => {
     //     return empty();

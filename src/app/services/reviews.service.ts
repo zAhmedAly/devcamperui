@@ -52,10 +52,7 @@ export class ReviewsService {
         errorResponse.error.message
       );
     } else {
-      console.error(
-        'ReviewsService Server Side Error :',
-        errorResponse.error.error
-      );
+      console.error('ReviewsService Server Side Error :', errorResponse);
     }
     // return an observable with a meaningful error message to the end user
     // return throwError(errorResponse.error.error);

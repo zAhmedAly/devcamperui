@@ -4,7 +4,9 @@
 <div class="container">
   <flash-messages style="justify-content: center;"></flash-messages>
   <router-outlet></router-outlet>
-  <div *ngIf="showLoadingIndicator" class="spinner"></div>
+  <div *ngIf="showLoadingIndicator" class="dark-overlay">
+    <div class="spinner"></div>
+  </div>
   <!-- <div class="lds-spinner" *ngIf="showLoadingIndicator">
     <div></div>
     <div></div>
