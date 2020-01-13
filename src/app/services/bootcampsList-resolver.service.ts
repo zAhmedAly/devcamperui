@@ -2,7 +2,7 @@ import { BootcampsService } from 'app/services/bootcamps.service';
 import { Resolve } from '@angular/router';
 import { Observable, of, empty } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
 
 @Injectable()
 // Implement the Resolve interface, as we are implementing a route resolve guard
@@ -16,8 +16,9 @@ export class BootcampsListResolverService implements Resolve<[any] | string> {
   resolve(): // route: ActivatedRouteSnapshot,
   // state: RouterStateSnapshot
   Observable<[any] | string> {
-    return this.bootscampsService
-      .getBootcamps()
-      .pipe(catchError((err: string) => of(err)));
+    return this.bootscampsService.getBootcamps().pipe(
+      delay(1000),
+      catchError((err: string) => of(err).pipe(delay(1000)))
+    );
   }
 }
