@@ -46,46 +46,56 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // get return url from route parameters or default to '/'
-    this.returnUrl = localStorage.getItem('returnUrl') || '/dashboard';
-    localStorage.setItem('returnUrl', this.returnUrl);
-    console.log('AppComponent ngOnInit this.returnUrl = ', this.returnUrl);
+    if (this.authService.loggedIn()) {
+      console.log(
+        'AppComponent ngOnInit this.authService.loggedIn() ',
+        this.authService.loggedIn()
+      );
 
-    // Get the query params
-    // this.route.queryParams.subscribe(params => {
-    //   console.log(
-    //     'LoginComponent ngOnInit params[returnUrl] = ',
-    //     params['returnUrl']
-    //   );
-    //   this.returnUrl = params['returnUrl'] || '/';
-    // });
+      // get return url from route parameters or default to '/'
+      this.returnUrl = localStorage.getItem('returnUrl') || '/dashboard';
+      localStorage.setItem('returnUrl', this.returnUrl);
 
-    // if (!this.authService.loggedIn()) {
-    const timer = JSON.parse(localStorage.getItem('timer'));
-    const now = Date.now();
+      // Get the query params
+      // this.route.queryParams.subscribe(params => {
+      //   console.log(
+      //     'LoginComponent ngOnInit params[returnUrl] = ',
+      //     params['returnUrl']
+      //   );
+      //   this.returnUrl = params['returnUrl'] || '/';
+      // });
 
-    // console.log('timer is = ', timer);
-    // console.log('Date.now() is = ', now);
-    console.log('Date.now() - timer =', now - timer);
+      // if (!this.authService.loggedIn()) {
+      const timer = JSON.parse(localStorage.getItem('timer'));
+      const now = Date.now();
 
-    if (
-      this.authService.loggedIn() &&
-      timer &&
-      Date.now() - timer > 10 * 60 * 1000
-    ) {
-      // Auto Logoff after 1 mins
-      console.log('Inside AppComponent ... Auto LogOut');
-      this.authService.logout();
+      // console.log('timer is = ', timer);
+      // console.log('Date.now() is = ', now);
+      console.log('Date.now() - timer =', now - timer);
 
-      this.flashMessage.show('Your session has expired', {
-        cssClass: 'alert-warning',
-        timeout: 10000
-      });
+      if (
+        this.authService.loggedIn() &&
+        timer &&
+        Date.now() - timer > 1 * 60 * 1000
+      ) {
+        // Auto Logoff after 1 mins
+        console.log('Inside AppComponent ... Auto LogOut');
+        this.authService.logout();
+
+        this.flashMessage.show('Your session has expired', {
+          cssClass: 'alert-warning',
+          timeout: 10000
+        });
+      }
+      console.log(
+        'AppComponent ngOnInit before navigateByUrl this.returnUrl = ',
+        this.returnUrl
+      );
+    } else {
+      this.returnUrl = '/';
+      localStorage.setItem('returnUrl', this.returnUrl);
     }
-    console.log(
-      'AppComponent ngOnInit before navigateByUrl this.returnUrl = ',
-      this.returnUrl
-    );
+    console.log('AppComponent ngOnInit this.returnUrl = ', this.returnUrl);
     this.router.navigateByUrl(this.returnUrl);
   }
 }

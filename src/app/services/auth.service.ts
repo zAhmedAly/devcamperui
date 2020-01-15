@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  authToken: any;
+  authToken: string = null;
   user: any;
   private jwtHelper: JwtHelperService = new JwtHelperService();
   private apiUrl = 'http://localhost:5000/api/v1';
@@ -66,6 +66,7 @@ export class AuthService {
 
   loggedIn() {
     this.loadToken();
+    // console.log('AuthService loggedIn this.authToken ', this.authToken);
     // console.log('decodeToken = ', this.jwtHelper.decodeToken(this.authToken));
     // console.log(
     //   'getTokenExpirationDate = ',

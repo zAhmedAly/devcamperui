@@ -3,3 +3,6 @@
   z-index: 1;
   overflow-x: hidden;
 }
+
+@media only screen and (min-device-width: 768px) {
+}
