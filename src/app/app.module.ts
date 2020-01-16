@@ -63,6 +63,7 @@ const appRoutes: Routes = [
   {
     path: 'manage-bootcamp/:bootcampId',
     component: ManageBootcampComponent,
+    resolve: { bootcamp: BootcampResolverService },
     canActivate: [AuthGuard]
   },
 

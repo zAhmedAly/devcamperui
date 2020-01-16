@@ -1,10 +1,10 @@
-<section class="container mt-3">
+<section>
   <div class="row">
     <div class="col-md-8 m-auto">
       <div class="card py-2 px-4">
         <div class="card-body">
           <h4 class="mb-4">Manage Bootcamp</h4>
-          <div class="card mb-3">
+          <div class="card mb-2">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img
@@ -16,12 +16,10 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">
-                    <a href="bootcamp.html"
-                      >Devworks Bootcamp
-                      <span class="float-right badge badge-success"
-                        >8.8</span
-                      ></a
-                    >
+                    {{ bootcampName }}
+                    <span class="float-right badge badge-success">{{
+                      averageRating || 'No'
+                    }}</span>
                   </h5>
                   <span class="badge badge-dark mb-2">Boston, MA</span>
                   <p class="card-text">
@@ -47,7 +45,7 @@
             </div>
             <input
               type="submit"
-              class="btn btn-light btn-block"
+              class="btn btn-dark btn-block"
               value="Upload Image"
             />
           </form>
@@ -58,7 +56,7 @@
             >Manage Courses</a
           >
           <a href="#" class="btn btn-danger btn-block">Remove Bootcamp</a>
-          <p class="text-muted mt-5">
+          <p class="text-muted mt-2">
             * You can only add one bootcamp per account.
           </p>
           <p class="text-muted">
