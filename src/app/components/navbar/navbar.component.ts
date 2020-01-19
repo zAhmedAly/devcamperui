@@ -10,6 +10,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class NavbarComponent implements OnInit {
   returnUrl: string;
+  isLoggedIn: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -18,7 +19,9 @@ export class NavbarComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLoggedIn = this.authService.loggedIn();
+  }
 
   onLogoutClick() {
     this.returnUrl = localStorage.getItem('returnUrl') || '/';
