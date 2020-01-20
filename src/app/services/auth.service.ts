@@ -8,13 +8,14 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthData } from 'app/interfaces/auth-data';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
   authToken: string = null;
   user: any;
   private jwtHelper: JwtHelperService = new JwtHelperService();
-  private apiUrl = 'http://localhost:5000/api/v1';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
     // this.isDev = true;  // Change to false before deployment
