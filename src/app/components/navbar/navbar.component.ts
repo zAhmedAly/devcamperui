@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService,
     private route: ActivatedRoute
