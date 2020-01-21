@@ -84,6 +84,13 @@ const appRoutes: Routes = [
   },
 
   {
+    path: 'manage-courses/:bootcampId',
+    component: CoursesComponent,
+    // resolve: { bootcamp: BootcampResolverService },
+    canActivate: [AuthGuard]
+  },
+
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard]

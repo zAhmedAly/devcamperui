@@ -52,7 +52,9 @@
           <a href="add-bootcamp.html" class="btn btn-success btn-block"
             >Edit Bootcamp Details</a
           >
-          <a href="manage-courses.html" class="btn btn-primary btn-block"
+          <a
+            [routerLink]="['/manage-courses', bootcamp.id]"
+            class="btn btn-primary btn-block"
             >Manage Courses</a
           >
           <a href="#" class="btn btn-danger btn-block">Remove Bootcamp</a>
