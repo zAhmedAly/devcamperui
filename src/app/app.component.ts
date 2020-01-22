@@ -98,4 +98,8 @@ export class AppComponent implements OnInit {
     console.log('AppComponent ngOnInit this.returnUrl = ', this.returnUrl);
     this.router.navigateByUrl(this.returnUrl);
   }
+
+  onActivate(event) {
+    window.scroll(0, 0);
+  }
 }
