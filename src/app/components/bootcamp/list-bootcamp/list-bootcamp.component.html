@@ -20,7 +20,7 @@
             <p class="lead" *ngIf="averageCost">
               Average Course Cost:
               <span class="text-danger">
-                {{ averageCost | currency: 'USD':true:'4.0' }}
+                {{ averageCost | currency: 'USD':'symbol-narrow':'4.0' }}
               </span>
             </p>
           </h5>
@@ -60,7 +60,8 @@
               </p>
               <ul class="list-group">
                 <li class="list-group-item">
-                  Cost: {{ course.tuition | currency: 'USD':true:'4.0' }}
+                  Cost:
+                  {{ course.tuition | currency: 'USD':'symbol-narrow':'4.0' }}
                 </li>
                 <li class="list-group-item">
                   Skill Required: {{ course.minimumSkill }}
