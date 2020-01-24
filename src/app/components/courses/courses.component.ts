@@ -14,6 +14,7 @@ export class CoursesComponent implements OnInit {
   coursesList: [any] | string;
   bootcampName: string;
   averageRating: number;
+  photo: string;
   loggedInUserId: string;
 
   courseEnabled: boolean = true;
@@ -72,6 +73,7 @@ export class CoursesComponent implements OnInit {
       this.averageRating = this.coursesList['averageRating']
         ? this.coursesList['averageRating'].toFixed(1)
         : '';
+      this.photo = this.coursesList['photo'];
       this.courses = this.coursesList['data'];
       console.log('CoursesComponent getcourses this.courses = ', this.courses);
       const userInfo =

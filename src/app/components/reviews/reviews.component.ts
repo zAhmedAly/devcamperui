@@ -14,6 +14,7 @@ export class ReviewsComponent implements OnInit {
   reviewsList: [any] | string;
   bootcampName: string;
   averageRating: number;
+  photo: string;
   loggedInUserId: string;
 
   reviewEnabled: boolean = true;
@@ -74,6 +75,8 @@ export class ReviewsComponent implements OnInit {
       this.averageRating = this.reviewsList['averageRating']
         ? this.reviewsList['averageRating'].toFixed(1)
         : '';
+      this.photo = this.reviewsList['photo'];
+
       this.reviews = this.reviewsList['data'];
       console.log('ReviewsComponent getReviews this.reviews = ', this.reviews);
       const userInfo =
