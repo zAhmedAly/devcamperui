@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, timeout } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -16,13 +16,13 @@ export class BootcampsService {
   getBootcamps(): Observable<any> {
     return this.http
       .get(`${this.apiUrl}/bootcamps`)
-      .pipe(catchError(this.handleError));
+      .pipe(timeout(10000), catchError(this.handleError));
   }
 
   getBootcamp(bootcampId: string): Observable<any> {
     return this.http
       .get(`${this.apiUrl}/bootcamps/${bootcampId}`)
-      .pipe(catchError(this.handleError));
+      .pipe(timeout(10000), catchError(this.handleError));
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
