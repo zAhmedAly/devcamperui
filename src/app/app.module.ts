@@ -33,6 +33,8 @@ import { ReviewsService } from './services/reviews.service';
 import { BootcampsListResolverService } from './services/bootcampsList-resolver.service';
 import { ReviewsListResolverService } from './services/reviewsList.resolver.service';
 import { BootcampResolverService } from './services/bootcamp.resolver.service';
+import { CoursesListResolverService } from './services/coursesList.resolver.service';
+import { CoursesService } from './services/courses.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -86,7 +88,7 @@ const appRoutes: Routes = [
   {
     path: 'manage-courses/:bootcampId',
     component: CoursesComponent,
-    // resolve: { bootcamp: BootcampResolverService },
+    resolve: { courses: CoursesListResolverService },
     canActivate: [AuthGuard]
   },
 
@@ -132,9 +134,11 @@ const appRoutes: Routes = [
     AuthGuard,
     BootcampsService,
     ReviewsService,
+    CoursesService,
     BootcampsListResolverService,
     BootcampResolverService,
     ReviewsListResolverService,
+    CoursesListResolverService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

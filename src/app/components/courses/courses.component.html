@@ -1,1 +1,68 @@
-<p>courses works!</p>
+<section class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 m-auto">
+      <div class="card bg-white py-2 px-4">
+        <div class="card-body">
+          <a
+            [routerLink]="['/manage-bootcamp', bootcampId]"
+            class="btn btn-link mb-4"
+            ><i class="fa fa-chevron-left mr-2"></i> Manage Bootcamp</a
+          >
+
+          <h1 class="mb-4">Manage Courses</h1>
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="img/image_1.jpg" class="card-img" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="bootcamp.html"
+                      >Devworks Bootcamp
+                      <span class="float-right badge badge-success"
+                        >4.9</span
+                      ></a
+                    >
+                  </h5>
+                  <span class="badge badge-dark mb-2">Boston, MA</span>
+                  <p class="card-text">
+                    Web Development, UI/UX, Mobile Development
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="add-course.html" class="btn btn-primary btn-block mb-4"
+            >Add Bootcamp Course</a
+          >
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let course of courses">
+                <td>{{ course.title }}</td>
+                <td>
+                  <button class="btn btn-danger float-right">
+                    <i class="fa fa-times"></i>
+                  </button>
+                  <a
+                    href="add-course.html"
+                    class="btn btn-secondary float-right"
+                    style="margin-right : 2rem;"
+                    ><i class="fa fa-pencil"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

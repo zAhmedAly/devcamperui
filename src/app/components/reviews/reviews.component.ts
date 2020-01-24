@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReviewsService } from 'app/services/reviews.service';
 import { AuthService } from 'app/services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 

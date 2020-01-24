@@ -1,4 +1,4 @@
-# AngularSrc
+﻿# AngularSrc
 
 ## …or create a new repository on the command line
 
@@ -8,9 +8,22 @@ git init
 
 git add README.md
 
+git status
+
+git add .
+
 git commit -m "first commit"
 
 git remote add origin https://github.com/zAhmedAly/devcamperui.git
+
+git push -u origin master
+
+
+git status
+
+git add .
+
+git commit -m "commit comment"
 
 git push -u origin master
 
