@@ -25,6 +25,8 @@ export class ManageBootcampComponent implements OnInit {
 
   bootcampName: string = null;
   bootcampDesc: string = null;
+  city: string;
+  state: string;
   averageCost: number = null;
   averageRating: any;
   housing: boolean = false;
@@ -94,6 +96,8 @@ export class ManageBootcampComponent implements OnInit {
 
       this.bootcampName = this.bootcamp.name;
       this.bootcampDesc = this.bootcamp.description;
+      this.city = this.bootcamp.location.city;
+      this.state = this.bootcamp.location.state;
       this.averageCost = this.bootcamp.averageCost;
       this.housing = this.bootcamp.housing;
       this.jobAssistance = this.bootcamp.jobAssistance;

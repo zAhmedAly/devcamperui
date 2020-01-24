@@ -62,7 +62,7 @@ export class CoursesComponent implements OnInit {
       this._route.params.subscribe(params => {
         console.log('CoursesComponent ngOnInit route.params ', params);
         this.bootcampId = params['bootcampId'];
-        localStorage.setItem('returnUrl', `/courses/${this.bootcampId}`);
+        localStorage.setItem('returnUrl', `/manage-courses/${this.bootcampId}`);
       });
 
       // this.coursesService.getcourses(this.bootcampId).subscribe(courses => {

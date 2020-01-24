@@ -1,4 +1,4 @@
-<section class="container mt-5">
+<section>
   <div class="row">
     <div class="col-md-8 m-auto">
       <div class="card bg-white py-2 px-4">
@@ -9,28 +9,28 @@
             ><i class="fa fa-chevron-left mr-2"></i> Manage Bootcamp</a
           >
 
-          <h1 class="mb-4">Manage Courses</h1>
+          <h4 class="mb-4">Manage Courses</h4>
           <div class="card mb-3">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <img
                   src="../../../assets/img/{{ photo }}"
                   class="card-img"
+                  style="height: 100%;"
                   alt="..."
                 />
               </div>
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">
-                    <a href="bootcamp.html">
-                      {{ bootcampName }}
+                    {{ bootcampName }}
 
-                      <span class="float-right badge badge-success">{{
-                        averageRating || 'No'
-                      }}</span>
-                    </a>
+                    <span class="float-right badge badge-success">{{
+                      averageRating || 'No'
+                    }}</span>
                   </h5>
                   <span class="badge badge-dark mb-2">Boston, MA</span>
+
                   <p class="card-text">
                     Web Development, UI/UX, Mobile Development
                   </p>
