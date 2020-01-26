@@ -92,7 +92,8 @@ export class AppComponent implements OnInit {
         this.returnUrl
       );
     } else {
-      this.returnUrl = '/';
+      // this.returnUrl = '/';
+      this.returnUrl = localStorage.getItem('returnUrl') || '/';
       localStorage.setItem('returnUrl', this.returnUrl);
     }
     console.log('AppComponent ngOnInit this.returnUrl = ', this.returnUrl);

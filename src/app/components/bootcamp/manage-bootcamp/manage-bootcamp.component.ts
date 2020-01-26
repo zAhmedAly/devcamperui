@@ -117,6 +117,19 @@ export class ManageBootcampComponent implements OnInit {
           this.reviewEnabled = false;
         }
       });
+      this.bootcamp.careerList = '';
+
+      for (const j in this.bootcamp.careers) {
+        if (this.bootcamp.careers.hasOwnProperty(j)) {
+          this.bootcamp.careerList += this.bootcamp.careers[j] + ', ';
+        }
+      }
+      this.bootcamp.careerList = this.bootcamp.careerList.replace(/,\s*$/, '');
+
+      console.log(
+        'ManageBootcampComponent this.bootcamp.careerList = ',
+        this.bootcamp.careerList
+      );
 
       console.log(
         'ManageBootcampComponent this.bootcampCourses = ',
