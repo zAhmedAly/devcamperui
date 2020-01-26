@@ -35,6 +35,7 @@ import { ReviewsListResolverService } from './services/reviewsList.resolver.serv
 import { BootcampResolverService } from './services/bootcamp.resolver.service';
 import { CoursesListResolverService } from './services/coursesList.resolver.service';
 import { CoursesService } from './services/courses.service';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -97,7 +98,9 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  //Wrong route
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -119,7 +122,8 @@ const appRoutes: Routes = [
     UpdReviewComponent,
     CoursesComponent,
     AddCourseComponent,
-    UpdCourseComponent
+    UpdCourseComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
