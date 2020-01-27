@@ -22,6 +22,31 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav ml-auto">
+        <!-- Dropdown -->
+        <li
+          class="nav-item dropdown"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+        >
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbardrop"
+            data-toggle="dropdown"
+          >
+            Account
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/dashboard']">
+              <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+            </a>
+            <a class="dropdown-item" [routerLink]="['/profile']">
+              <i class="fa fa-user" aria-hidden="true"></i> Profile
+            </a>
+            <a class="dropdown-item" href="#">Manage</a>
+          </div>
+        </li>
+
         <li
           class="nav-item"
           *ngIf="authService.loggedIn()"
