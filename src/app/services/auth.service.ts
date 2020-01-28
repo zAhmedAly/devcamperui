@@ -65,6 +65,11 @@ export class AuthService {
     return this.user;
   }
 
+  getUserRole() {
+    const loggedInUser = JSON.parse(this.loadUserInfo());
+    return loggedInUser.role;
+  }
+
   loggedIn() {
     this.loadToken();
     // console.log('AuthService loggedIn this.authToken ', this.authToken);
