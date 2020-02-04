@@ -19,6 +19,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class AppComponent implements OnInit {
   returnUrl: string;
   showLoadingIndicator = true;
+  private timeoutValue = 1;
 
   constructor(
     private authService: AuthService,
@@ -46,53 +47,23 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authService.loggedIn()) {
-      console.log(
-        'AppComponent ngOnInit this.authService.loggedIn() ',
-        this.authService.loggedIn()
-      );
+    const timer = JSON.parse(localStorage.getItem('timer'));
+    const now = Date.now();
 
-      // get return url from route parameters or default to '/'
-      this.returnUrl = localStorage.getItem('returnUrl') || '/dashboard';
-      localStorage.setItem('returnUrl', this.returnUrl);
+    console.log('Date.now() = ', now);
+    console.log('timer =', timer);
+    console.log('Date.now() - timer =', (now - timer) / 1000);
+    console.log('5 * 60 * 1000 =', this.timeoutValue * 60);
 
-      // Get the query params
-      // this.route.queryParams.subscribe(params => {
-      //   console.log(
-      //     'LoginComponent ngOnInit params[returnUrl] = ',
-      //     params['returnUrl']
-      //   );
-      //   this.returnUrl = params['returnUrl'] || '/';
-      // });
+    if (timer && now - timer > this.timeoutValue * 60 * 1000) {
+      console.log('Inside AppComponent ... Auto LogOut #1');
+      this.authService.logout();
 
-      // if (!this.authService.loggedIn()) {
-      const timer = JSON.parse(localStorage.getItem('timer'));
-      const now = Date.now();
-
-      // console.log('timer is = ', timer);
-      // console.log('Date.now() is = ', now);
-      console.log('Date.now() - timer =', now - timer);
-
-      if (
-        this.authService.loggedIn() &&
-        timer &&
-        Date.now() - timer > 60 * 60 * 1000
-      ) {
-        // Auto Logoff after 1 mins
-        console.log('Inside AppComponent ... Auto LogOut');
-        this.authService.logout();
-
-        this.flashMessage.show('Your session has expired', {
-          cssClass: 'alert-warning',
-          timeout: 10000
-        });
-      }
-      console.log(
-        'AppComponent ngOnInit before navigateByUrl this.returnUrl = ',
-        this.returnUrl
-      );
+      this.flashMessage.show('Your session has expired', {
+        cssClass: 'alert-warning',
+        timeout: 10000
+      });
     } else {
-      // this.returnUrl = '/';
       this.returnUrl = localStorage.getItem('returnUrl') || '/';
       localStorage.setItem('returnUrl', this.returnUrl);
     }
