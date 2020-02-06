@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.authService.loggedIn()) {
+      console.log('Inside AuthGuard ... AuthGuard Success');
       return true;
     } else {
       console.log('Inside AuthGuard ... You need to Login to access this page');

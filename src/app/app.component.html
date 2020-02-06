@@ -2,7 +2,7 @@
 <!-- <div *ngIf="showLoadingIndicator" class="spinner"></div> -->
 
 <div class="container">
-  <flash-messages style="justify-content: center;"></flash-messages>
+  <flash-messages></flash-messages>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
 
   <div *ngIf="showLoadingIndicator" class="dark-overlay">

@@ -189,11 +189,9 @@
         Rating
       </h4>
       <!-- Buttons -->
-      <!-- <a [routerLink]="['/reviews']" class="btn btn-dark btn-block my-2"
-          ><i class="fa fa-comments"></i> Read Reviews
-          <span class="badge badge-light"> {{ bootcampReviews }} </span>
-        </a> -->
+
       <button
+        *ngIf="authService.getUserRole() === 'publisher'"
         [routerLink]="['/manage-bootcamp', bootcampId]"
         type="button"
         class="btn btn-dark btn-block"

@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BootcampsService } from 'app/services/bootcamps.service';
 import { AuthService } from 'app/services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
@@ -42,7 +41,7 @@ export class ListBootcampComponent implements OnInit {
     private _route: ActivatedRoute,
     private flashMessage: FlashMessagesService,
     private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     const resolvedData: [any] | string = this._route.snapshot.data['bootcamp'];
 
