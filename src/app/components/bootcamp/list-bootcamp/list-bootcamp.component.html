@@ -192,7 +192,7 @@
 
       <button
         *ngIf="
-          authService.getUserRole() && authService.getUserRole() === 'publisher'
+          authService.loggedIn() && authService.getUserRole() === 'publisher'
         "
         [routerLink]="['/manage-bootcamp', bootcampId]"
         type="button"
