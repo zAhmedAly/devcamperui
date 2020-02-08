@@ -65,10 +65,6 @@ export class CoursesComponent implements OnInit {
         localStorage.setItem('returnUrl', `/manage-courses/${this.bootcampId}`);
       });
 
-      // this.coursesService.getcourses(this.bootcampId).subscribe(courses => {
-      //   console.log('CoursesComponent getcourses = ', courses);
-      //   if (courses.success) {
-
       this.bootcampName = this.coursesList['bootcampName'];
       this.averageRating = this.coursesList['averageRating']
         ? this.coursesList['averageRating'].toFixed(1)
@@ -85,7 +81,5 @@ export class CoursesComponent implements OnInit {
         }
       });
     }
-    //   });
-    // }
   }
 }

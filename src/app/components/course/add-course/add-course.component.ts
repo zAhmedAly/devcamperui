@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-course',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
+  bootcampId: string = null;
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute) {}
 
   ngOnInit() {
+    this._route.params.subscribe(params => {
+      this.bootcampId = params['bootcampId'];
+      localStorage.setItem('returnUrl', `/add-course/${this.bootcampId}`);
+    });
   }
-
 }
