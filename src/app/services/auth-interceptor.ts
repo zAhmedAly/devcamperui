@@ -98,20 +98,34 @@ export class AuthInterceptor implements HttpInterceptor {
             });
             this.router.navigate(['/login']);
           }
-          if (response.status === 400) {
+          if (response.status === 403) {
             console.log(
-              'AuthInterceptor 400 UnAuthorized Request = ',
+              'AuthInterceptor 403 Forbidden Request = ',
               response.error.error
             );
-            this.flashMessage.show('You already reviewed this bootcamp', {
+            this.authService.logout();
+            this.flashMessage.show(response.error.error, {
               cssClass: 'alert-danger',
               timeout: 3000
             });
+            this.router.navigate(['/login']);
+          }
+          if (response.status === 400) {
+            console.log(
+              'AuthInterceptor 400 Bad Request = ',
+              response.error.error
+            );
+            this.flashMessage.show(response.error.error, {
+              cssClass: 'alert-danger',
+              timeout: 3000
+            });
+            //this.router.navigate(['/login']);
           }
         }
         // return // throwError(response.error.error);
         return throwError(
-          'Problem with Backend Service, We are notified & working on it. Please try again later.'
+          response.error.error
+          //||            'Problem with Backend Service, We are notified & working on it. Please try again later.'
         );
       })
     );

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   name: String;
   email: String;
   password: String;
+  role: String;
 
   constructor(
     private validateService: ValidateService,
@@ -24,14 +25,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   onRegisterSubmit() {
-    const user = {
+    const newUser = {
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: this.role
     };
-
+    console.log('RegisterComponent onRegisterSubmit newUser = ', newUser);
     // Required Fields
-    if (!this.validateService.validateRegister(user)) {
+    if (!this.validateService.validateRegister(newUser)) {
+      console.log(
+        'RegisterComponent onRegisterSubmit validateRegister = ',
+        newUser
+      );
       this.flashMessage.show('Please fill in all fields', {
         cssClass: 'alert-danger',
         timeout: 3000
@@ -40,7 +46,11 @@ export class RegisterComponent implements OnInit {
     }
 
     // Validate Email
-    if (!this.validateService.validateEmail(user.email)) {
+    if (!this.validateService.validateEmail(newUser.email)) {
+      console.log(
+        'RegisterComponent onRegisterSubmit validateEmail = ',
+        newUser
+      );
       this.flashMessage.show('Please use a valid email', {
         cssClass: 'alert-danger',
         timeout: 3000
@@ -49,7 +59,7 @@ export class RegisterComponent implements OnInit {
     }
 
     // Register user
-    this.authService.registerUser(user).subscribe(data => {
+    this.authService.registerUser(newUser).subscribe(data => {
       console.log(
         'RegisterComponent onRegisterSubmit registerUser data = ',
         data

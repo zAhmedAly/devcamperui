@@ -47,6 +47,7 @@ export class ReviewsService {
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
+    console.error('ReviewsService errorResponse = ', errorResponse);
     if (errorResponse.error instanceof ErrorEvent) {
       console.error(
         'ReviewsService Client Side Error :',
@@ -59,7 +60,7 @@ export class ReviewsService {
     // return throwError(errorResponse.error.error);
 
     return throwError(
-      errorResponse.error.error ||
+      errorResponse ||
         'Problem with the Reviews Service, We are notified & working on it. Please try again later.'
     );
   }

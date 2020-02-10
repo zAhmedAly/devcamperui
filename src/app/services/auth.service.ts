@@ -21,9 +21,9 @@ export class AuthService {
     // this.isDev = true;  // Change to false before deployment
   }
 
-  registerUser(user) {
+  registerUser(newUser) {
     return this.http
-      .post<AuthData>(`${this.apiUrl}/auth/register`, user)
+      .post<AuthData>(`${this.apiUrl}/auth/register`, newUser)
       .pipe(catchError(this.handleError));
   }
 
@@ -97,11 +97,11 @@ export class AuthService {
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
       console.error(
-        'ReviewsService Client Side Error :',
+        'AuthService Client Side Error :',
         errorResponse.error.message
       );
     } else {
-      console.error('ReviewsService Server Side Error :', errorResponse);
+      console.error('AuthService Server Side Error :', errorResponse);
     }
     // return an observable with a meaningful error message to the end user
     // return throwError(errorResponse.error.error);

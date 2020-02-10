@@ -43,10 +43,12 @@ export class AddReviewComponent implements OnInit {
       user: userInfo.id
     };
 
-    console.log('newReview =', newReview);
+    console.log('AddReviewComponent newReview =', newReview);
     this.reviewsService
       .addReview(this.bootcampId, newReview)
       .subscribe(result => {
+        console.log('AddReviewComponent addReview RESULT= ', result);
+
         if (typeof result === 'object') {
           console.log('AddReviewComponent addReview = ', result);
           // if (result.success) {
