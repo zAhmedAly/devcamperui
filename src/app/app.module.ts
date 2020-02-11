@@ -36,6 +36,8 @@ import { BootcampResolverService } from './services/bootcamp.resolver.service';
 import { CoursesListResolverService } from './services/coursesList.resolver.service';
 import { CoursesService } from './services/courses.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { UserAccessGuard } from './guards/user-access.guard';
+import { PublisherAccessGuard } from './guards/publisher-access.guard copy';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,18 +58,18 @@ const appRoutes: Routes = [
   {
     path: 'add-bootcamp',
     component: AddBootcampComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard]
   },
   {
     path: 'upd-bootcamp/:bootcampId',
     component: UpdBootcampComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard]
   },
   {
     path: 'manage-bootcamp/:bootcampId',
     component: ManageBootcampComponent,
     resolve: { bootcamp: BootcampResolverService },
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard]
   },
 
   {
@@ -78,25 +80,25 @@ const appRoutes: Routes = [
   {
     path: 'add-review/:bootcampId',
     component: AddReviewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, UserAccessGuard]
   },
   {
     path: 'upd-review/:bootcampId',
     component: UpdReviewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, UserAccessGuard]
   },
 
   {
     path: 'manage-courses/:bootcampId',
     component: CoursesComponent,
     resolve: { courses: CoursesListResolverService },
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard]
   },
 
   {
     path: 'add-course/:bootcampId',
     component: AddCourseComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard]
   },
 
   {
@@ -142,6 +144,8 @@ const appRoutes: Routes = [
     ValidateService,
     AuthService,
     AuthGuard,
+    UserAccessGuard,
+    PublisherAccessGuard,
     BootcampsService,
     ReviewsService,
     CoursesService,

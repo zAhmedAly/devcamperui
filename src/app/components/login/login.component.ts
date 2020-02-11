@@ -82,10 +82,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('timer', JSON.stringify(time_to_login));
         console.log('Inside LoginComponent ... ' + data.msg);
 
-        this.flashMessage.show(data.msg, {
-          cssClass: 'alert-success',
-          timeout: 3000
-        });
+        // this.flashMessage.show(data.msg, {
+        //   cssClass: 'alert-success',
+        //   timeout: 3000
+        // });
         setTimeout(() => {
           console.log('Inside LoginComponent setTimeout ... Auto Logout');
 

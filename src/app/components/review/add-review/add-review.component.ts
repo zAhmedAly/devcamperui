@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewsService } from 'app/services/reviews.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from 'app/services/auth.service';
@@ -20,16 +20,31 @@ export class AddReviewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private authService: AuthService,
     private reviewsService: ReviewsService,
     private flashMessage: FlashMessagesService
   ) {}
 
   ngOnInit() {
+    // if (
+    //   this.authService.loggedIn() &&
+    //   (this.authService.getUserRole() === 'user' ||
+    //     this.authService.getUserRole() === 'admin')
+    // ) {
     this.route.params.subscribe(params => {
       this.bootcampId = params['bootcampId'];
       localStorage.setItem('returnUrl', `/add-review/${this.bootcampId}`);
     });
+    // } else {
+    //   this.flashMessage.show('Not Authorized to access this page', {
+    //     cssClass: 'alert-danger',
+    //     timeout: 3000
+    //   });
+    //   this.authService.logout();
+    //   const returnUrl = localStorage.getItem('returnUrl');
+    //   this.router.navigateByUrl(returnUrl);
+    // }
   }
 
   onReviewSubmit() {
@@ -58,12 +73,6 @@ export class AddReviewComponent implements OnInit {
             'AddReviewComponent addReview this.reviews = ',
             this.reviews
           );
-          // } else {
-          //   this.flashMessage.show('Error in adding review', {
-          //     cssClass: 'alert-danger',
-          //     timeout: 3000
-          //   });
-          // }
         } else {
           console.log('ReviewsComponent typeof(resolvedData) ', typeof result);
           console.log('Inside ReviewsComponent ERROR ... ', result);
