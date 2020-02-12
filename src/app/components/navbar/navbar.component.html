@@ -36,21 +36,28 @@
             href="#"
             id="navbardrop"
             data-toggle="dropdown"
-          >
-            {{ authService.getUserRole() | uppercase }}
+            >{{ authService.getUserName() }}
           </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" [routerLink]="['/dashboard']">
+          <div class="dropdown-menu bg-default">
+            <a class="dropdown-item mb-3" [routerLink]="['/dashboard']">
               <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
             </a>
-            <a class="dropdown-item" [routerLink]="['/profile']">
+            <a class="dropdown-item mb-3" [routerLink]="['/profile']">
               <i class="fa fa-user" aria-hidden="true"></i> Profile
             </a>
             <a
               class="dropdown-item"
               *ngIf="authService.getUserRole() === 'publisher'"
-              href="#"
-              >Manage</a
+              [routerLink]="['/manage-bootcamp', bootcampId]"
+            >
+              Manage Bootcamp</a
+            >
+            <a
+              class="dropdown-item"
+              *ngIf="authService.getUserRole() === 'user'"
+              [routerLink]="['/profile']"
+            >
+              Manage User</a
             >
           </div>
         </li>

@@ -70,6 +70,11 @@ export class AuthService {
     return loggedInUser.role;
   }
 
+  getUserName() {
+    const loggedInUser = JSON.parse(this.loadUserInfo());
+    return loggedInUser.name;
+  }
+
   loggedIn() {
     this.loadToken();
     // console.log('AuthService loggedIn this.authToken ', this.authToken);

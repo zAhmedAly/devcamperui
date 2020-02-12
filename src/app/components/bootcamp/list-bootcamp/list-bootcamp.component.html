@@ -213,10 +213,10 @@
         <span class="sr-only">Reviews</span>
       </button>
       <a
+        *ngIf="authService.loggedIn() && reviewEnabled && authService.getUserRole() === 'user'"
         [routerLink]="['/add-review', bootcampId]"
         routerLinkActive="router-link-active"
         class="btn btn-success btn-block my-2"
-        *ngIf="reviewEnabled"
         ><i class="fa fa-pencil-alt"></i> Write a Review</a
       >
       <!-- <a

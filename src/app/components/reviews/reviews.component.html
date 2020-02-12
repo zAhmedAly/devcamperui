@@ -64,7 +64,11 @@
       </h4> -->
       <!-- Buttons -->
       <a
-        *ngIf="reviewEnabled"
+        *ngIf="
+          authService.loggedIn() &&
+          reviewEnabled &&
+          authService.getUserRole() === 'user'
+        "
         [routerLink]="['/add-review', bootcampId]"
         class="btn btn-success btn-block my-3"
         ><i class="fas fa-pencil-alt"></i> Review This Bootcamp</a
