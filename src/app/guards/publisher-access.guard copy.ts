@@ -28,12 +28,12 @@ export class PublisherAccessGuard implements CanActivate {
       return true;
     } else {
       console.log('Inside PublisherAccessGuard ... Not Authorized');
-      this.flashMessage.show('Not Authorized ... Please Login', {
+      this.flashMessage.show('Not Authorized to access this page', {
         cssClass: 'alert-danger',
         timeout: 5000
       });
-      this.authService.logout();
-      this.router.navigate(['/login']);
+      // this.authService.logout();
+      this.router.navigate(['/profile']);
       return false;
     }
   }

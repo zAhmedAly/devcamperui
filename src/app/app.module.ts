@@ -80,12 +80,12 @@ const appRoutes: Routes = [
   {
     path: 'add-review/:bootcampId',
     component: AddReviewComponent,
-    canActivate: [AuthGuard, UserAccessGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'upd-review/:bootcampId',
     component: UpdReviewComponent,
-    canActivate: [AuthGuard, UserAccessGuard]
+    canActivate: [AuthGuard]
   },
 
   {

@@ -27,24 +27,25 @@ export class AddReviewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if (
-    //   this.authService.loggedIn() &&
-    //   (this.authService.getUserRole() === 'user' ||
-    //     this.authService.getUserRole() === 'admin')
-    // ) {
-    this.route.params.subscribe(params => {
-      this.bootcampId = params['bootcampId'];
-      localStorage.setItem('returnUrl', `/add-review/${this.bootcampId}`);
-    });
-    // } else {
-    //   this.flashMessage.show('Not Authorized to access this page', {
-    //     cssClass: 'alert-danger',
-    //     timeout: 3000
-    //   });
-    //   this.authService.logout();
-    //   const returnUrl = localStorage.getItem('returnUrl');
-    //   this.router.navigateByUrl(returnUrl);
-    // }
+    if (
+      this.authService.loggedIn() &&
+      (this.authService.getUserRole() === 'user' ||
+        this.authService.getUserRole() === 'admin')
+    ) {
+      this.route.params.subscribe(params => {
+        this.bootcampId = params['bootcampId'];
+        localStorage.setItem('returnUrl', `/add-review/${this.bootcampId}`);
+      });
+    } else {
+      this.flashMessage.show('Not Authorized to access this page', {
+        cssClass: 'alert-danger',
+        timeout: 3000
+      });
+      // this.authService.logout();
+      localStorage.setItem('returnUrl', `/profile`);
+    }
+    const returnUrl = localStorage.getItem('returnUrl');
+    this.router.navigateByUrl(returnUrl);
   }
 
   onReviewSubmit() {
