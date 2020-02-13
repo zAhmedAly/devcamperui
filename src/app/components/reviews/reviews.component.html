@@ -63,16 +63,13 @@
         Rating
       </h4> -->
       <!-- Buttons -->
-      <a
-        *ngIf="
-          authService.loggedIn() &&
-          reviewEnabled &&
-          authService.getUserRole() === 'user'
-        "
+      <button
         [routerLink]="['/add-review', bootcampId]"
         class="btn btn-success btn-block my-3"
-        ><i class="fas fa-pencil-alt"></i> Review This Bootcamp</a
+        [disabled]="!reviewEnabled"
       >
+        <i class="fa fa-pencil-alt"></i> Review This Bootcamp
+      </button>
       <!-- <a
         *ngIf="!reviewEnabled"
         [routerLink]="['/add-review', bootcampId]"

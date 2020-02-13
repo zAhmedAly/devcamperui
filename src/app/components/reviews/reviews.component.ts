@@ -87,6 +87,10 @@ export class ReviewsComponent implements OnInit {
           this.reviewEnabled = false;
         }
       });
+
+      if (userInfo.role === 'publisher') {
+        this.reviewEnabled = false;
+      }
     }
     //   });
     // }

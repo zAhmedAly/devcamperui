@@ -119,6 +119,10 @@ export class ListBootcampComponent implements OnInit {
         }
       });
 
+      if (userInfo.role === 'publisher') {
+        this.reviewEnabled = false;
+      }
+
       console.log(
         'ListBootcampComponent this.bootcampCourses = ',
         this.bootcampCourses

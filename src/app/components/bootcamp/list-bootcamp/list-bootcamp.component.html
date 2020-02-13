@@ -205,20 +205,21 @@
         type="button"
         class="btn btn-primary btn-block"
       >
-        <i class="fa fa-comments mr-1"></i>Read Reviews
+        <i class="fa fa-comments mr-1"></i> Read Reviews
 
         <span class="badge badge-light ml-2">
           {{ bootcampReviewCount }}
         </span>
         <span class="sr-only">Reviews</span>
       </button>
-      <a
-        *ngIf="authService.loggedIn() && reviewEnabled && authService.getUserRole() === 'user'"
+      <button
         [routerLink]="['/add-review', bootcampId]"
         routerLinkActive="router-link-active"
         class="btn btn-success btn-block my-2"
-        ><i class="fa fa-pencil-alt"></i> Write a Review</a
+        [disabled]="!reviewEnabled"
       >
+        <i class="fa fa-pencil-alt"></i> Write a Review
+      </button>
       <!-- <a
         [routerLink]="['/add-review', bootcampId]"
         routerLinkActive="router-link-active"
