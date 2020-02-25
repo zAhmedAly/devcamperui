@@ -5,11 +5,13 @@
       <i class="fa fa-chevron-left mr-2"></i>Bootcamps</a
     >
   </div>
-  <app-bootcamp-item [bootcamp]="bootcamp"> </app-bootcamp-item>
+  <!-- <app-bootcamp-item [bootcamp]="bootcamp"> </app-bootcamp-item> -->
 
   <div class="row">
     <!-- Main col -->
     <div class="col-md-8" *ngIf="bootcampName">
+      <app-bootcamp-item [bootcamp]="bootcamp"> </app-bootcamp-item>
+
       <div class="card mb-3">
         <h4 class="card-header text-white bg-primary">
           {{ bootcampName }}
@@ -88,6 +90,104 @@
         </div>
       </div>
 
+      <!-- Courses -->
+      <!-- <div class="card mb-2" *ngFor="let course of bootcampCourses">
+        <h5 class="card-header bg-primary text-white">
+          {{ course.title }}
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">Duration: {{ course.weeks }} Weeks</h5>
+          <p class="card-text">
+            {{ course.description }}
+          </p>
+          <ul class="list-group">
+            <li class="list-group-item">
+              Cost: {{ course.tuition | currency: 'USD':true:'4.0' }}
+            </li>
+            <li class="list-group-item">
+              Skill Required: {{ course.minimumSkill }}
+            </li>
+            <li class="list-group-item" *ngIf="course.scholarshipAvailable">
+              Scholarship Available: <i class="fa fa-check text-success"></i>
+            </li>
+            <li class="list-group-item" *ngIf="!course.scholarshipAvailable">
+              Scholarship Available:
+              <i class="fa fa-times text-danger" aria-hidden="true"></i>
+            </li>
+          </ul>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      <!-- Image -->
+      <!-- <img
+        src="../../../assets/img/{{ bootcamp.photo }}"
+        class="img-thumbnail"
+        alt=""
+      /> -->
+      <!-- Rating -->
+      <!-- <h4 class="text-center my-2">
+        <span
+          class="badge badge-secondary badge-success  rounded-circle p-2 mr-2"
+          >{{ averageRating || 'No' }}
+        </span>
+        Rating
+      </h4> -->
+
+      <!-- Map -->
+      <div
+        class="mb-3"
+        id="map"
+        style="width: 100%; height: 300px; border-style: groove;"
+      ></div>
+
+      <a href="#" target="_blank" class="btn btn-link btn-block my-2"
+        ><i class="fa fa-globe mr-2"></i>Visit Website</a
+      >
+      <!-- Buttons -->
+
+      <button
+        *ngIf="
+          authService.loggedIn() && authService.getUserRole() === 'publisher'
+        "
+        [routerLink]="['/manage-bootcamp', bootcampId]"
+        type="button"
+        class="btn btn-dark btn-block"
+      >
+        Manage Bootcamp
+      </button>
+      <button
+        [routerLink]="['/reviews', bootcampId]"
+        type="button"
+        class="btn btn-primary btn-block"
+      >
+        <i class="fa fa-comments mr-1"></i> Read Reviews
+
+        <span class="badge badge-light ml-2">
+          {{ bootcampReviewCount }}
+        </span>
+        <span class="sr-only">Reviews</span>
+      </button>
+      <button
+        [routerLink]="['/add-review', bootcampId]"
+        routerLinkActive="router-link-active"
+        class="btn btn-success btn-block my-2"
+        [disabled]="!reviewEnabled"
+      >
+        <i class="fa fa-pencil-alt"></i> Write a Review
+      </button>
+
+      <!-- <a href="#" target="_blank" class="btn btn-link btn-block my-2"
+        ><i class="fa fa-globe mr-2"></i>Visit Website</a
+      > -->
+      <!-- Map -->
+      <!-- <div
+        id="map"
+        style="width: 100%; height: 300px; border-style: groove;"
+      ></div> -->
+
       <!-- Perks -->
       <h4 class="mb-4 mt-4" *ngIf="bootcampCourses">Perks Provided</h4>
 
@@ -144,99 +244,6 @@
         </li>
       </ul>
 
-      <!-- Courses -->
-      <!-- <h4 class="mb-3" *ngIf="bootcampCourses">Courses Provided</h4>
-      <div class="card mb-2" *ngFor="let course of bootcampCourses">
-        <h5 class="card-header bg-primary text-white">
-          {{ course.title }}
-        </h5>
-        <div class="card-body">
-          <h5 class="card-title">Duration: {{ course.weeks }} Weeks</h5>
-          <p class="card-text">
-            {{ course.description }}
-          </p>
-          <ul class="list-group">
-            <li class="list-group-item">
-              Cost: {{ course.tuition | currency: 'USD':true:'4.0' }}
-            </li>
-            <li class="list-group-item">
-              Skill Required: {{ course.minimumSkill }}
-            </li>
-            <li class="list-group-item" *ngIf="course.scholarshipAvailable">
-              Scholarship Available: <i class="fa fa-check text-success"></i>
-            </li>
-            <li class="list-group-item" *ngIf="!course.scholarshipAvailable">
-              Scholarship Available:
-              <i class="fa fa-times text-danger" aria-hidden="true"></i>
-            </li>
-          </ul>
-        </div>
-      </div> -->
-    </div>
-
-    <!-- Sidebar -->
-    <div class="col-md-4">
-      <!-- Image -->
-      <img
-        src="../../../assets/img/{{ bootcamp.photo }}"
-        class="img-thumbnail"
-        alt=""
-      />
-      <!-- Rating -->
-      <h4 class="text-center my-2">
-        <span
-          class="badge badge-secondary badge-success  rounded-circle p-2 mr-2"
-          >{{ averageRating || 'No' }}
-        </span>
-        Rating
-      </h4>
-      <!-- Buttons -->
-
-      <button
-        *ngIf="
-          authService.loggedIn() && authService.getUserRole() === 'publisher'
-        "
-        [routerLink]="['/manage-bootcamp', bootcampId]"
-        type="button"
-        class="btn btn-dark btn-block"
-      >
-        Manage Bootcamp
-      </button>
-      <button
-        [routerLink]="['/reviews', bootcampId]"
-        type="button"
-        class="btn btn-primary btn-block"
-      >
-        <i class="fa fa-comments mr-1"></i> Read Reviews
-
-        <span class="badge badge-light ml-2">
-          {{ bootcampReviewCount }}
-        </span>
-        <span class="sr-only">Reviews</span>
-      </button>
-      <button
-        [routerLink]="['/add-review', bootcampId]"
-        routerLinkActive="router-link-active"
-        class="btn btn-success btn-block my-2"
-        [disabled]="!reviewEnabled"
-      >
-        <i class="fa fa-pencil-alt"></i> Write a Review
-      </button>
-      <!-- <a
-        [routerLink]="['/add-review', bootcampId]"
-        routerLinkActive="router-link-active"
-        class="btn btn-success btn-block my-2 disabled"
-        *ngIf="!reviewEnabled"
-        ><i class="fa fa-pencil-alt"></i> You already reviewed this bootcamp
-      </a> -->
-      <a href="#" target="_blank" class="btn btn-link btn-block my-2"
-        ><i class="fa fa-globe mr-2"></i>Visit Website</a
-      >
-      <!-- Map -->
-      <div
-        id="map"
-        style="width: 100%; height: 300px; border-style: groove;"
-      ></div>
       <!-- Perks -->
       <!-- <ul class="list-group list-group-flush my-2" style="border-style:groove">
         <li class="list-group-item" *ngIf="housing">
