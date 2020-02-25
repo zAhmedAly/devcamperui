@@ -79,7 +79,13 @@
     <!-- Main col -->
     <div class="col-md-9">
       <!-- Bootcamps -->
-      <div *ngFor="let bootcamp of bootcamps" class="card mb-3">
+      <app-bootcamp-item
+        *ngFor="let bootcamp of bootcamps"
+        [bootcamp]="bootcamp"
+      >
+      </app-bootcamp-item>
+
+      <!-- <div *ngFor="let bootcamp of bootcamps" class="card mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
             <img
@@ -115,7 +121,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Pagination -->
       <!-- <nav aria-label="Page navigation example">

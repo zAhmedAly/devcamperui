@@ -13,10 +13,17 @@ export class BootcampsService {
 
   constructor(private http: HttpClient) {}
 
-  getBootcamps(): Observable<any> {
-    return this.http
-      .get(`${this.apiUrl}/bootcamps`)
-      .pipe(timeout(10000), catchError(this.handleError));
+  getBootcamps(miles: string, zipcode: string): Observable<any> {
+    if (!miles || !zipcode) {
+      return this.http
+        .get(`${this.apiUrl}/bootcamps`)
+        .pipe(timeout(10000), catchError(this.handleError));
+    } else {
+      // /radius/:zipcode/:distance
+      return this.http
+        .get(`${this.apiUrl}/bootcamps/radius/${zipcode}/${miles}`)
+        .pipe(timeout(10000), catchError(this.handleError));
+    }
   }
 
   getBootcamp(bootcampId: string): Observable<any> {

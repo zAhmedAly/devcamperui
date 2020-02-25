@@ -55,20 +55,20 @@ export class AppComponent implements OnInit {
     console.log('Date.now() - timer =', (now - timer) / 1000);
     console.log('5 * 60 * 1000 =', this.timeoutValue * 60);
 
-    // if (timer && now - timer > this.timeoutValue * 60 * 1000) {
-    //   console.log('Inside AppComponent ... Auto LogOut #1');
-    //   this.authService.logout();
+    if (timer && now - timer > this.timeoutValue * 60 * 1000) {
+      console.log('Inside AppComponent ... Auto LogOut #1');
+      this.authService.logout();
 
-    //   this.flashMessage.show('Your session has expired', {
-    //     cssClass: 'alert-warning',
-    //     timeout: 10000
-    //   });
-    // } else {
-    //   this.returnUrl = localStorage.getItem('returnUrl') || '/';
-    //   localStorage.setItem('returnUrl', this.returnUrl);
-    // }
-    // console.log('AppComponent ngOnInit this.returnUrl = ', this.returnUrl);
-    // this.router.navigateByUrl(this.returnUrl);
+      this.flashMessage.show('Your session has expired', {
+        cssClass: 'alert-warning',
+        timeout: 10000
+      });
+    } else {
+      this.returnUrl = localStorage.getItem('returnUrl') || '/';
+      localStorage.setItem('returnUrl', this.returnUrl);
+    }
+    console.log('AppComponent ngOnInit this.returnUrl = ', this.returnUrl);
+    this.router.navigateByUrl(this.returnUrl);
   }
 
   onActivate(event) {

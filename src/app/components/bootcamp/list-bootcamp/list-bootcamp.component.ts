@@ -119,6 +119,14 @@ export class ListBootcampComponent implements OnInit {
         }
       });
 
+      this.bootcamp.careerList = '';
+      for (const j in this.bootcamp.careers) {
+        if (this.bootcamp.careers.hasOwnProperty(j)) {
+          this.bootcamp.careerList += this.bootcamp.careers[j] + ', ';
+        }
+      }
+      this.bootcamp.careerList = this.bootcamp.careerList.replace(/,\s*$/, '');
+
       if (userInfo.role === 'publisher') {
         this.reviewEnabled = false;
       }

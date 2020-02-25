@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BootcampsService } from 'app/services/bootcamps.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
@@ -65,9 +64,9 @@ export class BootcampsComponent implements OnInit {
         if (this.bootcamps.hasOwnProperty(i)) {
           const element = this.bootcamps[i];
           this.bootcamps[i].careerList = '';
-          this.bootcamps[i].averageRating = this.bootcamps[i].averageRating
-            ? this.bootcamps[i].averageRating.toFixed(1)
-            : '';
+          // this.bootcamps[i].averageRating = this.bootcamps[i].averageRating
+          //   ? this.bootcamps[i].averageRating.toFixed(1)
+          //   : '';
           for (const j in this.bootcamps[i].careers) {
             if (this.bootcamps[i].careers.hasOwnProperty(j)) {
               this.bootcamps[i].careerList +=
