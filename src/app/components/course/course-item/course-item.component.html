@@ -1,0 +1,91 @@
+<!-- <div class="accordion" id="accordionExample">
+  <div class="card my-2">
+    <div class="card-header" [attr.id]="'heading' + index">
+      <h2 class="mb-0">
+        <button
+          class="btn btn-link collapsed"
+          type="button"
+          data-toggle="collapse"
+          [attr.data-target]="'#collapse' + index"
+          aria-expanded="true"
+          [attr.aria-controls]="'collapse' + index"
+        >
+          {{ course.title }} + {{ index
+          }}<i class="fa fa-chevron-down ml-2"></i>
+        </button>
+      </h2>
+    </div>
+
+    <div
+      [attr.id]="'collapse' + index"
+      class="collapse"
+      [attr.aria-labelledby]="'heading' + index"
+      data-parent="#accordionExample"
+    >
+      <div class="card-body">
+        <h5 class="card-title">Duration: {{ course.weeks }} Weeks</h5>
+        <p class="card-text">
+          {{ course.description }}
+        </p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            Cost:
+            {{ course.tuition | currency: 'USD':'symbol-narrow':'4.0' }}
+          </li>
+          <li class="list-group-item">
+            Skill Required: {{ course.minimumSkill }}
+          </li>
+          <li class="list-group-item" *ngIf="course.scholarshipAvailable">
+            Scholarship Available:
+            <i class="fa fa-check text-success"></i>
+          </li>
+          <li class="list-group-item" *ngIf="!course.scholarshipAvailable">
+            Scholarship Available:
+            <i class="fa fa-times text-danger" aria-hidden="true"></i>
+          </li>
+          <div *ngIf="showEditDelete" class="my-2">
+            <button class="btn btn-primary">
+              <i class="fa fa-pencil"></i> Edit
+            </button>
+            <button class="btn btn-danger float-right">
+              <i class="fa fa-times"></i> Delete
+            </button>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="card mb-2">
+  <h5 class="card-header bg-primary text-white">
+    {{ course.title }}
+  </h5>
+  <div class="card-body">
+    <h5 class="card-title">Duration: {{ course.weeks }} Weeks</h5>
+    <p class="card-text">
+      {{ course.description }}
+    </p>
+    <ul class="list-group">
+      <li class="list-group-item">
+        Cost: {{ course.tuition | currency: 'USD':true:'4.0' }}
+      </li>
+      <li class="list-group-item">Skill Required: {{ course.minimumSkill }}</li>
+      <li class="list-group-item" *ngIf="course.scholarshipAvailable">
+        Scholarship Available: <i class="fa fa-check text-success"></i>
+      </li>
+      <li class="list-group-item" *ngIf="!course.scholarshipAvailable">
+        Scholarship Available:
+        <i class="fa fa-times text-danger" aria-hidden="true"></i>
+      </li>
+      <div class="my-2">
+        <button *ngIf="showEditDelete" class="btn btn-primary">
+          <i class="fa fa-pencil"></i> Edit
+        </button>
+        <button *ngIf="showEditDelete" class="btn btn-danger float-right">
+          <i class="fa fa-times"></i> Delete
+        </button>
+      </div>
+    </ul>
+  </div>
+</div>

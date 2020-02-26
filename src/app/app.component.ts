@@ -19,7 +19,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class AppComponent implements OnInit {
   returnUrl: string;
   showLoadingIndicator = true;
-  private timeoutValue = 1;
+  private timeoutValue = 60;
 
   constructor(
     private authService: AuthService,

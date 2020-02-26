@@ -39,6 +39,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UserAccessGuard } from './guards/user-access.guard';
 import { PublisherAccessGuard } from './guards/publisher-access.guard copy';
 import { BootcampItemComponent } from './components/bootcamp/bootcamp-item/bootcamp-item.component';
+import { CourseItemComponent } from './components/course/course-item/course-item.component';
+import { ReviewItemComponent } from './components/review/review-item/review-item.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -133,7 +135,9 @@ const appRoutes: Routes = [
     AddCourseComponent,
     UpdCourseComponent,
     PageNotFoundComponent,
-    BootcampItemComponent
+    BootcampItemComponent,
+    CourseItemComponent,
+    ReviewItemComponent
   ],
   imports: [
     BrowserModule,

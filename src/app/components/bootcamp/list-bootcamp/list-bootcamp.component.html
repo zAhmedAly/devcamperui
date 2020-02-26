@@ -34,7 +34,7 @@
       <!-- Courses -->
 
       <h4 class="mb-4 mt-4" *ngIf="bootcampCourses">Courses Provided</h4>
-      <div class="accordion" id="accordionExample">
+      <!-- <div class="accordion" id="accordionExample">
         <div
           class="card my-1"
           *ngFor="let course of bootcampCourses; index as i"
@@ -88,9 +88,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Courses -->
+      <app-course-item
+        *ngFor="let course of bootcampCourses; index as i"
+        [course]="course"
+        [index]="i"
+      >
+      </app-course-item>
+
       <!-- <div class="card mb-2" *ngFor="let course of bootcampCourses">
         <h5 class="card-header bg-primary text-white">
           {{ course.title }}

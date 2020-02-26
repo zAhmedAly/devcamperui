@@ -44,10 +44,23 @@
             class="btn btn-primary btn-block mb-4"
             >Add Bootcamp Course</a
           >
-          <table class="table table-striped">
+
+          <!-- Courses -->
+          <h4 class="mb-4 mt-4">Courses Provided</h4>
+          <div class="accordion" id="accordionExample">
+            <app-course-item
+              *ngFor="let course of courses; index as i"
+              [course]="course"
+              [showEditDelete]="true"
+              [index]="i"
+            >
+            </app-course-item>
+          </div>
+
+          <!-- <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Title</th>
+                <th scope="col">Courses</th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -59,7 +72,7 @@
                     <i class="fa fa-times"></i>
                   </button>
                   <a
-                    href="add-course.html"
+                    href="#"
                     class="btn btn-secondary float-right"
                     style="margin-right : 2rem;"
                     ><i class="fa fa-pencil"></i
@@ -67,7 +80,7 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
         </div>
       </div>
     </div>
