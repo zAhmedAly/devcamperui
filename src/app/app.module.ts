@@ -41,6 +41,7 @@ import { PublisherAccessGuard } from './guards/publisher-access.guard copy';
 import { BootcampItemComponent } from './components/bootcamp/bootcamp-item/bootcamp-item.component';
 import { CourseItemComponent } from './components/course/course-item/course-item.component';
 import { ReviewItemComponent } from './components/review/review-item/review-item.component';
+import { FilterZipcodeDistanceComponent } from './components/filter-zipcode-distance/filter-zipcode-distance.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -137,7 +138,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     BootcampItemComponent,
     CourseItemComponent,
-    ReviewItemComponent
+    ReviewItemComponent,
+    FilterZipcodeDistanceComponent
   ],
   imports: [
     BrowserModule,
