@@ -13,7 +13,10 @@ export class BootcampsService {
 
   constructor(private http: HttpClient) {}
 
-  getBootcamps(miles: string, zipcode: string): Observable<any> {
+  getBootcamps(zipcode: string, miles: string): Observable<any> {
+    console.log('BootcampsService getBootcamps ZIPCODE = ', zipcode);
+    console.log('BootcampsService getBootcamps MILES = ', miles);
+
     if (!miles || !zipcode) {
       return this.http
         .get(`${this.apiUrl}/bootcamps`)

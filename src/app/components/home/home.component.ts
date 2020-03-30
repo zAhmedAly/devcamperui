@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  miles: string = '50';
+  zipcode: string = '01854';
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -14,8 +16,12 @@ export class HomeComponent implements OnInit {
   }
 
   onFindSubmit() {
-    this.router.navigate(['/bootcamps'], {
-      queryParams: { miles: '50', zipcode: '01854' }
-    });
+    this.router.navigate([
+      '/bootcamps',
+      { zipcode: this.zipcode, miles: this.miles }
+    ]);
+    // this.router.navigate(['/bootcamps'], {
+    //   queryParams: { miles: '50', zipcode: '01854' }
+    // });
   }
 }

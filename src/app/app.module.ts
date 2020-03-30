@@ -42,6 +42,8 @@ import { BootcampItemComponent } from './components/bootcamp/bootcamp-item/bootc
 import { CourseItemComponent } from './components/course/course-item/course-item.component';
 import { ReviewItemComponent } from './components/review/review-item/review-item.component';
 import { FilterZipcodeDistanceComponent } from './components/filter-zipcode-distance/filter-zipcode-distance.component';
+import { ListBootcampsComponent } from './components/list-bootcamps/list-bootcamps.component';
+import { ListZipcodeDistanceComponent } from './components/list-zipcode-distance/list-zipcode-distance.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -51,6 +53,12 @@ const appRoutes: Routes = [
   {
     path: 'bootcamps',
     component: BootcampsComponent,
+    resolve: { bootcampsList: BootcampsListResolverService }
+  },
+  {
+    path: 'bootcamps/:zipcode/:distance',
+    // component: BootcampsComponent,
+    component: ListBootcampsComponent,
     resolve: { bootcampsList: BootcampsListResolverService }
   },
   {
@@ -139,7 +147,9 @@ const appRoutes: Routes = [
     BootcampItemComponent,
     CourseItemComponent,
     ReviewItemComponent,
-    FilterZipcodeDistanceComponent
+    FilterZipcodeDistanceComponent,
+    ListBootcampsComponent,
+    ListZipcodeDistanceComponent
   ],
   imports: [
     BrowserModule,

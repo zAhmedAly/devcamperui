@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
-  selector: 'app-bootcamps',
-  templateUrl: './bootcamps.component.html',
-  styleUrls: ['./bootcamps.component.css']
+  selector: 'app-list-bootcamps',
+  templateUrl: './list-bootcamps.component.html',
+  styleUrls: ['./list-bootcamps.component.css']
 })
-export class BootcampsComponent implements OnInit {
+export class ListBootcampsComponent implements OnInit {
   bootcamps: [any];
   bootcampsList: [any] | string;
   error: string = null;
@@ -15,8 +15,8 @@ export class BootcampsComponent implements OnInit {
   careerList = '';
   showLoadingIndicator = true;
 
-  miles: string;
-  zipcode: string;
+  @Input() miles: string;
+  @Input() zipcode: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -50,6 +50,9 @@ export class BootcampsComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('onMilesDataChanged Miles =', this.miles);
+    console.log('onZipcodeDataChanged Zipcode =', this.zipcode);
+
     if (this.error === null) {
       localStorage.setItem('returnUrl', '/bootcamps');
 
@@ -79,19 +82,5 @@ export class BootcampsComponent implements OnInit {
 
       console.log('this.bootcamps = ', this.bootcamps);
     }
-  }
-
-  receiveData($event) {
-    this.zipcode = $event.zipcode;
-    this.miles = $event.miles;
-    console.log('XXXX BootcampsComponent receiveData ZIPCODE = ', this.zipcode);
-    console.log('XXXX BootcampsComponent receiveData MILES = ', this.miles);
-
-    this.router.navigate([
-      '/bootcamps',
-      this.zipcode,
-      this.miles
-      //  { zipcode: this.zipcode, miles: this.miles }
-    ]);
   }
 }

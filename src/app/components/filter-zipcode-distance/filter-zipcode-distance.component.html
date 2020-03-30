@@ -1,1 +1,38 @@
-<p>filter-zipcode-distance works!</p>
+<div class="card card-body mb-4">
+  <h4 class="mb-3">By Location</h4>
+  <form (submit)="sendData()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="miles"
+            placeholder="Miles From"
+            [(ngModel)]="miles"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="zipcode"
+            placeholder="Zipcode"
+            [(ngModel)]="zipcode"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- <input
+      type="button"
+      value="Find Bootcamps"
+      class="btn btn-primary btn-block"
+    /> -->
+  </form>
+  <button class="btn btn-primary btn-block mb-2" (click)="sendData()">
+    Find Bootcamps
+  </button>
+</div>

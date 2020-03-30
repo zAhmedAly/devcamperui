@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'app/services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -9,6 +9,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  bootcamp: any;
+
   bootcampId: string;
   courses: any;
   coursesList: [any] | string;
@@ -24,9 +26,14 @@ export class CoursesComponent implements OnInit {
     private _route: ActivatedRoute,
     private authService: AuthService,
     private flashMessage: FlashMessagesService,
-    private router: Router
+    private router: Router,
+    private activatedroute: ActivatedRoute
   ) {
     console.log('CoursesComponent constructor =====');
+
+    this.activatedroute.queryParams.subscribe(data => {
+      console.log('DATA ====> ', data);
+    });
 
     const resolvedData: [any] | string = this._route.snapshot.data['courses'];
 

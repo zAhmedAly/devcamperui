@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filter-zipcode-distance',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-zipcode-distance.component.css']
 })
 export class FilterZipcodeDistanceComponent implements OnInit {
+  miles: string = '50';
+  zipcode: string = '01854';
 
-  constructor() { }
+  @Output() messageEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit() {
+  constructor(private router: Router) {}
+
+  sendData() {
+    this.messageEvent.emit({ zipcode: this.zipcode, miles: this.miles });
   }
 
+  ngOnInit() {}
 }

@@ -31,6 +31,7 @@
           >
           <a
             [routerLink]="['/manage-courses', bootcamp.id]"
+            [queryParams]="{ id: bootcamp }"
             class="btn btn-primary btn-block"
             >Manage Courses</a
           >
