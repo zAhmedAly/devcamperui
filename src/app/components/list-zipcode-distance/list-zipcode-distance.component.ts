@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class ListZipcodeDistanceComponent implements OnInit {
   miles: string = '50';
   zipcode: string = '01854';
-
+  bootcamps: any;
   constructor(private router: Router) {}
 
   sendData() {

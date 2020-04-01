@@ -19,7 +19,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class AppComponent implements OnInit {
   returnUrl: string;
   showLoadingIndicator = true;
-  private timeoutValue = 60;
+  private timeoutValue = 1;
 
   constructor(
     private authService: AuthService,
@@ -57,6 +57,8 @@ export class AppComponent implements OnInit {
 
     if (timer && now - timer > this.timeoutValue * 60 * 1000) {
       console.log('Inside AppComponent ... Auto LogOut #1');
+      localStorage.setItem('returnUrl', '/');
+      console.log('AppComponent ngOnInit this.returnUrl #1 = ', this.returnUrl);
       this.authService.logout();
 
       this.flashMessage.show('Your session has expired', {

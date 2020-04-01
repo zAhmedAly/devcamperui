@@ -10,7 +10,6 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class CoursesComponent implements OnInit {
   bootcamp: any;
-
   bootcampId: string;
   courses: any;
   coursesList: [any] | string;
