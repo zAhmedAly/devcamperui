@@ -7,19 +7,19 @@ import {
   NavigationStart,
   NavigationEnd,
   NavigationError,
-  NavigationCancel
+  NavigationCancel,
 } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   returnUrl: string;
   showLoadingIndicator = true;
-  private timeoutValue = 1;
+  private timeoutValue = 15;
 
   constructor(
     private authService: AuthService,
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
 
       this.flashMessage.show('Your session has expired', {
         cssClass: 'alert-warning',
-        timeout: 10000
+        timeout: 10000,
       });
     } else {
       this.returnUrl = localStorage.getItem('returnUrl') || '/';

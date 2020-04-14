@@ -9,7 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  bootcamp: any;
+  @Input() bootcamp: any;
   bootcampId: string;
   courses: any;
   coursesList: [any] | string;

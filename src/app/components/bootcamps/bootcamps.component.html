@@ -48,11 +48,9 @@
     <!-- Main col -->
     <div class="col-md-9">
       <!-- Bootcamps -->
-      <app-bootcamp-item
-        *ngFor="let bootcamp of bootcamps"
-        [bootcamp]="bootcamp"
-      >
-      </app-bootcamp-item>
+      <div *ngFor="let bootcamp of bootcamps">
+        <app-bootcamp-item [bootcamp]="bootcamp"> </app-bootcamp-item>
+      </div>
 
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
