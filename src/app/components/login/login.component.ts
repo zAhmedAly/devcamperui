@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   email: String;
@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    localStorage.setItem('returnUrl', '/login');
     // get return url from route parameters or default to '/'
     console.log(
       'this.route.snapshot.queryParams[returnUrl] ',
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
       console.log('inside onLoginSubmit --- Empty Email or Password');
       this.flashMessage.show('Enter Email and Password', {
         cssClass: 'alert-danger',
-        timeout: 5000
+        timeout: 5000,
       });
       this.router.navigate(['login']);
       return false;
@@ -58,10 +59,10 @@ export class LoginComponent implements OnInit {
 
     const user = {
       email: this.email,
-      password: this.password
+      password: this.password,
     };
 
-    this.authService.authenticateUser(user).subscribe(data => {
+    this.authService.authenticateUser(user).subscribe((data) => {
       console.log(
         'LoginComponent onLoginSubmit authenticateUser data = ',
         data
@@ -72,7 +73,7 @@ export class LoginComponent implements OnInit {
           id: data.result.id,
           name: data.result.name,
           email: data.result.email,
-          role: data.result.role
+          role: data.result.role,
         };
         this.authService.storeUserData(token, user);
         const returnUrlx = localStorage.getItem('returnUrl');
@@ -92,7 +93,7 @@ export class LoginComponent implements OnInit {
           this.authService.logout();
           this.flashMessage.show('Your login session has expired', {
             cssClass: 'alert-warning',
-            timeout: 10000
+            timeout: 10000,
           });
           this.router.navigate(['/login']);
         }, 5 * 60 * 1000); // Auto Logoff after 5 mins
@@ -103,7 +104,7 @@ export class LoginComponent implements OnInit {
         console.log('Inside LoginComponent ... ' + data.msg);
         this.flashMessage.show(data.msg, {
           cssClass: 'alert-danger',
-          timeout: 3000
+          timeout: 3000,
         });
         this.returnUrl = '/login';
       }
