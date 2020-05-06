@@ -4,26 +4,25 @@ img {
 .showcase {
   background: url('../../../assets/img/showcase.jpg') no-repeat center
     center/cover;
-  min-height: 75vh;
+  height: auto;
+  min-height: 80% !important;
   color: #fff;
   border: 4px solid silver;
   position: fixed;
   top: 50%;
   left: 50%;
   width: 80%;
-  height: fit-content;
+  margin-top: 1rem;
   transform: translate(-50%, -50%);
 }
+
 .showcase-inner {
   text-align: center;
   width: 90%;
   margin: auto;
-
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
-  height: fit-content;
-
   transform: translate(-50%, -50%);
 }
 .dark-overlay {
