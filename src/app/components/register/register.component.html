@@ -1,47 +1,90 @@
 <!-- Register -->
-<!-- <div class="container"> -->
-<section class="showcase my-3">
-  <div class="dark-overlay">
-    <div class="showcase-inner">
-      <h4><i class="fa fa-user-plus" aria-hidden="true"></i> Register User</h4>
-      <p>
-        Register to list your bootcamp or search and review bootcamps
-      </p>
-      <form class="form-register" (submit)="onRegisterSubmit()">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            [(ngModel)]="name"
-            class="form-control"
-            placeholder="Enter full name"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            [(ngModel)]="email"
-            class="form-control"
-            placeholder="Enter email"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            [(ngModel)]="password"
-            class="form-control"
-            placeholder="Enter password"
-            required
-          />
-        </div>
-        <!-- <div class="form-group mb-4">
+<div class="container">
+  <section class="showcase my-3">
+    <div class="dark-overlay">
+      <div class="showcase-inner">
+        <h4>
+          <i class="fa fa-user-plus" aria-hidden="true"></i> Register User
+        </h4>
+        <p>
+          Register to list your bootcamp or search & review bootcamps
+        </p>
+        <form class="form-register" (submit)="onRegisterSubmit()">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  [(ngModel)]="name"
+                  class="form-control"
+                  placeholder="Enter full name"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  class="form-control"
+                  placeholder="Enter email"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  [(ngModel)]="password"
+                  class="form-control"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <!-- <div class="card card-body my-2 text-dark"> -->
+              <h6 class="mt-2">Role</h6>
+              <div class="form-check-inline mt-1">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="role"
+                  [(ngModel)]="role"
+                  value="user"
+                  checked
+                />
+                <label class="form-check-label">
+                  User
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="role"
+                  [(ngModel)]="role"
+                  value="publisher"
+                />
+                <label class="form-check-label">
+                  Publisher
+                </label>
+              </div>
+              <!-- </div> -->
+            </div>
+          </div>
+
+          <!-- <div class="form-group mb-4">
           <label for="password2">Confirm Password</label>
           <input
             type="password"
@@ -52,51 +95,22 @@
           />
         </div> -->
 
-        <div class="card card-body my-3 text-dark">
-          <h5>User Role</h5>
-          <div class="form-check">
+          <!-- <p class="mt-2">
+            * You must be affiliated with the bootcamp in order to add it to
+            DevCamper.
+          </p> -->
+          <div class="form-group mt-2">
             <input
-              class="form-check-input"
-              type="radio"
-              name="role"
-              [(ngModel)]="role"
-              value="user"
-              checked
+              type="submit"
+              value="Register"
+              class="btn btn-primary btn-block"
             />
-            <label class="form-check-label">
-              <!-- (Browse, Write reviews, etc) -->
-              Regular User
-            </label>
           </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="role"
-              [(ngModel)]="role"
-              value="publisher"
-            />
-            <label class="form-check-label">
-              Bootcamp Publisher
-            </label>
-          </div>
-        </div>
-        <p class="text-danger">
-          * You must be affiliated with the bootcamp in some way in order to add
-          it to DevCamper.
-        </p>
-        <div class="form-group">
-          <input
-            type="submit"
-            value="Register"
-            class="btn btn-primary btn-block"
-          />
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
-<!-- </div> -->
+  </section>
+</div>
 
 <!-- <section class="showcase my-3">
   <div class="dark-overlay">

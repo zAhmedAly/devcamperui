@@ -2,7 +2,6 @@ img {
   width: 70%;
 }
 .showcase {
-  /* position: relative; */
   background: url('../../../assets/img/showcase.jpg') no-repeat center
     center/cover;
   min-height: 75vh;
@@ -13,7 +12,6 @@ img {
   left: 50%;
   width: 80%;
   height: fit-content;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
 .showcase-inner {
@@ -21,13 +19,11 @@ img {
   width: 90%;
   margin: auto;
 
-  /* border: 4px solid silver; */
   position: fixed;
   top: 50%;
   left: 50%;
   height: fit-content;
 
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
 .dark-overlay {
