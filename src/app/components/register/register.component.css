@@ -14,8 +14,6 @@ img {
   left: 50%;
   width: 80%;
   padding: 2rem;
-
-  /* margin-top: 1rem; */
   transform: translate(-50%, -50%);
 }
 
@@ -39,9 +37,10 @@ img {
   height: 100%;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
   .showcase {
     width: 60%;
+    min-height: 60% !important;
   }
   .showcase-inner {
     width: 75%;
