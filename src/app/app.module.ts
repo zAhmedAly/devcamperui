@@ -37,7 +37,7 @@ import { CoursesListResolverService } from './services/coursesList.resolver.serv
 import { CoursesService } from './services/courses.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserAccessGuard } from './guards/user-access.guard';
-import { PublisherAccessGuard } from './guards/publisher-access.guard copy';
+import { PublisherAccessGuard } from './guards/publisher-access.guard';
 import { BootcampItemComponent } from './components/bootcamp/bootcamp-item/bootcamp-item.component';
 import { CourseItemComponent } from './components/course/course-item/course-item.component';
 import { ReviewItemComponent } from './components/review/review-item/review-item.component';
@@ -53,74 +53,74 @@ const appRoutes: Routes = [
   {
     path: 'bootcamps',
     component: BootcampsComponent,
-    resolve: { bootcampsList: BootcampsListResolverService }
+    resolve: { bootcampsList: BootcampsListResolverService },
   },
   {
     path: 'bootcamps/:zipcode/:distance',
     // component: BootcampsComponent,
     component: ListBootcampsComponent,
-    resolve: { bootcampsList: BootcampsListResolverService }
+    resolve: { bootcampsList: BootcampsListResolverService },
   },
   {
     path: 'list-bootcamp/:bootcampId',
     component: ListBootcampComponent,
-    resolve: { bootcamp: BootcampResolverService }
+    resolve: { bootcamp: BootcampResolverService },
   },
 
   {
     path: 'add-bootcamp',
     component: AddBootcampComponent,
-    canActivate: [AuthGuard, PublisherAccessGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard],
   },
   {
     path: 'upd-bootcamp/:bootcampId',
     component: UpdBootcampComponent,
-    canActivate: [AuthGuard, PublisherAccessGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard],
   },
   {
     path: 'manage-bootcamp/:bootcampId',
     component: ManageBootcampComponent,
     resolve: { bootcamp: BootcampResolverService },
-    canActivate: [AuthGuard, PublisherAccessGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard],
   },
 
   {
     path: 'reviews/:bootcampId',
     component: ReviewsComponent,
-    resolve: { reviewsList: ReviewsListResolverService }
+    resolve: { reviewsList: ReviewsListResolverService },
   },
   {
     path: 'add-review/:bootcampId',
     component: AddReviewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'upd-review/:bootcampId',
     component: UpdReviewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
 
   {
     path: 'manage-courses/:bootcampId',
     component: CoursesComponent,
     resolve: { courses: CoursesListResolverService },
-    canActivate: [AuthGuard, PublisherAccessGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard],
   },
 
   {
     path: 'add-course/:bootcampId',
     component: AddCourseComponent,
-    canActivate: [AuthGuard, PublisherAccessGuard]
+    canActivate: [AuthGuard, PublisherAccessGuard],
   },
 
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   //Wrong route
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
@@ -149,14 +149,14 @@ const appRoutes: Routes = [
     ReviewItemComponent,
     FilterZipcodeDistanceComponent,
     ListBootcampsComponent,
-    ListZipcodeDistanceComponent
+    ListZipcodeDistanceComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes), // { enableTracing: true }),
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
   ],
   providers: [
     ValidateService,
@@ -171,8 +171,8 @@ const appRoutes: Routes = [
     BootcampResolverService,
     ReviewsListResolverService,
     CoursesListResolverService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,7 +3,7 @@ import {
   Router,
   CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -30,7 +30,7 @@ export class PublisherAccessGuard implements CanActivate {
       console.log('Inside PublisherAccessGuard ... Not Authorized');
       this.flashMessage.show('Not Authorized to access this page', {
         cssClass: 'alert-danger',
-        timeout: 5000
+        timeout: 5000,
       });
       // this.authService.logout();
       this.router.navigate(['/profile']);

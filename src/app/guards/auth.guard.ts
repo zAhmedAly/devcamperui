@@ -3,7 +3,7 @@ import {
   Router,
   CanActivate,
   ActivatedRouteSnapshot,
-  RouterStateSnapshot
+  RouterStateSnapshot,
 } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -22,14 +22,10 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       console.log('Inside AuthGuard ... You need to Login to access this page');
-      // this.flashMessage.show('Login to access this page', {
-      //   cssClass: 'alert-danger',
-      //   timeout: 5000
-      // });
-      this.router.navigate(['/login'], {
+      this.router.navigate(['login'], {
         queryParams: {
-          returnUrl: state.url
-        }
+          returnUrl: state.url,
+        },
       });
       return false;
     }

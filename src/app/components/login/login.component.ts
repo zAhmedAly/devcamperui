@@ -31,19 +31,19 @@ export class LoginComponent implements OnInit {
 
     this.returnUrl =
       this.route.snapshot.queryParams['returnUrl'] ||
-      localStorage.getItem('returnUrl') ||
+      // localStorage.getItem('returnUrl') ||
       '/dashboard';
     localStorage.setItem('returnUrl', this.returnUrl);
     console.log('LoginComponent ngOnInit this.returnUrl = ', this.returnUrl);
 
-    // Get the query params
-    // this.route.queryParams.subscribe(params => {
-    //   console.log(
-    //     'LoginComponent ngOnInit params[returnUrl] = ',
-    //     params['returnUrl']
-    //   );
-    //   this.returnUrl = params['returnUrl'] || '/dashboard';
-    // });
+    //    Get the query params
+    this.route.queryParams.subscribe((params) => {
+      console.log(
+        'LoginComponent ngOnInit params[returnUrl] = ',
+        params['returnUrl']
+      );
+      this.returnUrl = params['returnUrl'] || '/dashboard';
+    });
   }
 
   onLoginSubmit() {
