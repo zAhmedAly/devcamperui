@@ -8,7 +8,7 @@ import { AuthService } from 'app/services/auth.service';
 @Component({
   selector: 'app-manage-bootcamp',
   templateUrl: './manage-bootcamp.component.html',
-  styleUrls: ['./manage-bootcamp.component.css']
+  styleUrls: ['./manage-bootcamp.component.css'],
 })
 export class ManageBootcampComponent implements OnInit {
   style = 'mapbox://styles/mapbox/streets-v11';
@@ -65,7 +65,7 @@ export class ManageBootcampComponent implements OnInit {
       console.log('Inside LoginComponent ... ' + this.error);
       this.flashMessage.show(this.error, {
         cssClass: 'alert-danger',
-        timeout: 5000
+        timeout: 5000,
       });
       //this.router.navigate(['/']);
       const returnUrlx = localStorage.getItem('returnUrl');
@@ -74,9 +74,28 @@ export class ManageBootcampComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (
+      this.authService.loggedIn() &&
+      (this.authService.getUserRole() === 'publisher' ||
+        this.authService.getUserRole() === 'admin')
+    ) {
+      console.log(
+        'Inside PublisherAccessGuard ... PublisherAccessGuard Success'
+      );
+    } else {
+      console.log('Inside PublisherAccessGuard ... Not Authorized');
+      this.flashMessage.show('Not Authorized to access this page', {
+        cssClass: 'alert-danger',
+        timeout: 5000,
+      });
+      // this.authService.logout();
+      this.router.navigate(['/profile']);
+      return false;
+    }
+
     if (this.error === null) {
       var slug = '';
-      this._route.params.subscribe(params => {
+      this._route.params.subscribe((params) => {
         this.bootcampId = params['bootcampId'];
         localStorage.setItem(
           'returnUrl',
@@ -112,7 +131,7 @@ export class ManageBootcampComponent implements OnInit {
       const userInfo =
         JSON.parse(this.authService.loadUserInfo()) || 'No user data';
 
-      this.bootcampReviews.forEach(review => {
+      this.bootcampReviews.forEach((review) => {
         if (review.user === userInfo.id) {
           this.reviewEnabled = false;
         }

@@ -70,18 +70,18 @@ const appRoutes: Routes = [
   {
     path: 'add-bootcamp',
     component: AddBootcampComponent,
-    canActivate: [AuthGuard, PublisherAccessGuard],
+    canActivate: [AuthGuard], //, PublisherAccessGuard],
   },
   {
     path: 'upd-bootcamp/:bootcampId',
     component: UpdBootcampComponent,
-    canActivate: [AuthGuard, PublisherAccessGuard],
+    canActivate: [AuthGuard], //, PublisherAccessGuard],
   },
   {
     path: 'manage-bootcamp/:bootcampId',
     component: ManageBootcampComponent,
     resolve: { bootcamp: BootcampResolverService },
-    canActivate: [AuthGuard, PublisherAccessGuard],
+    canActivate: [AuthGuard], //, PublisherAccessGuard],
   },
 
   {
@@ -95,7 +95,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'upd-review/:bootcampId',
+    path: 'upd-review/:reviewId',
     component: UpdReviewComponent,
     canActivate: [AuthGuard],
   },
@@ -104,15 +104,20 @@ const appRoutes: Routes = [
     path: 'manage-courses/:bootcampId',
     component: CoursesComponent,
     resolve: { courses: CoursesListResolverService },
-    canActivate: [AuthGuard, PublisherAccessGuard],
+    canActivate: [AuthGuard], //, PublisherAccessGuard],
   },
 
   {
     path: 'add-course/:bootcampId',
     component: AddCourseComponent,
-    canActivate: [AuthGuard, PublisherAccessGuard],
+    canActivate: [AuthGuard], //, PublisherAccessGuard],
   },
 
+  {
+    path: 'upd-course/:courseId',
+    component: UpdCourseComponent,
+    canActivate: [AuthGuard], //, PublisherAccessGuard],
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
