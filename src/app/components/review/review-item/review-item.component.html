@@ -3,7 +3,7 @@
   <h5 class="card-header bg-primary text-white">
     {{ review.title }}
 
-    <a
+    <!-- <a
       *ngIf="loggedInUserId === review.user._id"
       href="#"
       target="_blank"
@@ -11,15 +11,15 @@
       style="margin-left: 2rem;"
     >
       <i class="fa fa-trash" aria-hidden="true"></i>
-    </a>
-    <a
+    </a> -->
+    <!-- <a
       *ngIf="loggedInUserId === review.user._id"
       [routerLink]="['/upd-review', bootcampId]"
       routerLinkActive="router-link-active"
       class="float-right text-white"
     >
       <i class="fa fa-pencil" aria-hidden="true"></i>
-    </a>
+    </a> -->
   </h5>
   <div class="card-body">
     <h5 class="card-title">
@@ -29,5 +29,13 @@
       {{ review.text }}
     </p>
     <p class="text-muted">Writtern By {{ review.user.name }}</p>
+  </div>
+  <div *ngIf="loggedInUserId === review.user._id" class="mt-3">
+    <button class="btn btn-danger btn-sm float-right mr-3">
+      <i class="fa fa-times"></i> Delete
+    </button>
+    <button class="btn btn-primary btn-sm float-right mr-3">
+      <i class="fa fa-pencil"></i> Edit
+    </button>
   </div>
 </div>

@@ -31,7 +31,7 @@ export class AddCourseComponent implements OnInit {
     } else {
       this.flashMessage.show('Not Authorized to access this page', {
         cssClass: 'alert-danger',
-        timeout: 5000,
+        timeout: 3000,
       });
       this.router.navigate(['/profile']);
       return false;

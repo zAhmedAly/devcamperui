@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css']
+  styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent implements OnInit {
   @Input() bootcamp: any;
@@ -30,7 +30,7 @@ export class CoursesComponent implements OnInit {
   ) {
     console.log('CoursesComponent constructor =====');
 
-    this.activatedroute.queryParams.subscribe(data => {
+    this.activatedroute.queryParams.subscribe((data) => {
       console.log('DATA ====> ', data);
     });
 
@@ -55,7 +55,7 @@ export class CoursesComponent implements OnInit {
       console.log('Inside CoursesComponent ERROR ... ' + this.error);
       this.flashMessage.show(this.error, {
         cssClass: 'alert-danger',
-        timeout: 5000
+        timeout: 5000,
       });
       //this.router.navigate(['/']);
       const returnUrlx = localStorage.getItem('returnUrl');
@@ -64,8 +64,27 @@ export class CoursesComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (
+      this.authService.loggedIn() &&
+      (this.authService.getUserRole() === 'publisher' ||
+        this.authService.getUserRole() === 'admin')
+    ) {
+      console.log(
+        'Inside PublisherAccessGuard ... PublisherAccessGuard Success'
+      );
+    } else {
+      console.log('Inside PublisherAccessGuard ... Not Authorized');
+      this.flashMessage.show('Not Authorized to access this page', {
+        cssClass: 'alert-danger',
+        timeout: 3000,
+      });
+      // this.authService.logout();
+      this.router.navigate(['/profile']);
+      return false;
+    }
+
     if (this.error === null) {
-      this._route.params.subscribe(params => {
+      this._route.params.subscribe((params) => {
         console.log('CoursesComponent ngOnInit route.params ', params);
         this.bootcampId = params['bootcampId'];
         localStorage.setItem('returnUrl', `/manage-courses/${this.bootcampId}`);
@@ -81,7 +100,7 @@ export class CoursesComponent implements OnInit {
       const userInfo =
         JSON.parse(this.authService.loadUserInfo()) || 'No user data';
       this.loggedInUserId = userInfo.id;
-      this.courses.forEach(course => {
+      this.courses.forEach((course) => {
         if (course.user._id === userInfo.id) {
           this.courseEnabled = false;
         }

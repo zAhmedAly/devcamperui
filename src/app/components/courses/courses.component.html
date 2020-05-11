@@ -1,21 +1,13 @@
 <section>
-  <!-- <div class="row col-md-8">
-    <a [routerLink]="['/bootcamps']" class="btn btn-link mb-2">
-      <i class="fa fa-chevron-left mr-2"></i>Bootcamps</a
-    >
-  </div> -->
+  <a [routerLink]="['/manage-bootcamp', bootcampId]" class="btn btn-link mb-2"
+    ><i class="fa fa-chevron-left mr-2"></i> Manage Bootcamp</a
+  >
   <div class="row">
     <div class="col-md-10 m-auto">
       <div class="card bg-white py-2 px-4">
         <div class="card-body">
-          <a
-            [routerLink]="['/manage-bootcamp', bootcampId]"
-            class="btn btn-link mb-4"
-            ><i class="fa fa-chevron-left mr-2"></i> Manage Bootcamp</a
-          >
-
           <h4 class="mb-4">Manage Courses</h4>
-
+          <!-- bootcamp info -->
           <div class="card mb-3">
             <div class="row no-gutters">
               <div class="col-md-4">
@@ -53,15 +45,15 @@
 
           <!-- Courses -->
           <h4 class="mb-4 mt-4">Courses Provided</h4>
-          <div class="accordion" id="accordionExample">
-            <app-course-item
-              *ngFor="let course of courses; index as i"
-              [course]="course"
-              [showEditDelete]="true"
-              [index]="i"
-            >
-            </app-course-item>
-          </div>
+          <!-- <div class="accordion" id="accordionExample"> -->
+          <app-course-item
+            *ngFor="let course of courses; index as i"
+            [course]="course"
+            [showEditDelete]="true"
+            [index]="i"
+          >
+          </app-course-item>
+          <!-- </div> -->
 
           <!-- <table class="table table-striped">
             <thead>
