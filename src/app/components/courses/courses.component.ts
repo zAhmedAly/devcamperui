@@ -16,10 +16,17 @@ export class CoursesComponent implements OnInit {
   bootcampName: string;
   averageRating: number;
   photo: string;
+  state: string;
+  city: string;
+  zipcode: string;
+  careers: string[];
+  count: number;
+
   loggedInUserId: string;
 
   courseEnabled: boolean = true;
   error: string = null;
+  careerList: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -95,6 +102,19 @@ export class CoursesComponent implements OnInit {
         ? this.coursesList['averageRating'].toFixed(1)
         : '';
       this.photo = this.coursesList['photo'];
+      this.state = this.coursesList['state'];
+      this.city = this.coursesList['city'];
+      this.zipcode = this.coursesList['zipcode'].substring(0, 5);
+      this.careers = this.coursesList['careers'];
+      this.count = +this.coursesList['count'];
+      this.careerList = '';
+      for (const j in this.careers) {
+        if (this.careers.hasOwnProperty(j)) {
+          this.careerList += this.careers[j] + ', ';
+        }
+      }
+      this.careerList = this.careerList.replace(/,\s*$/, '');
+
       this.courses = this.coursesList['data'];
       console.log('CoursesComponent getcourses this.courses = ', this.courses);
       const userInfo =

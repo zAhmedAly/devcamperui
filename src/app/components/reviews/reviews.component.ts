@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 @Component({
   selector: 'app-reviews',
   templateUrl: './reviews.component.html',
-  styleUrls: ['./reviews.component.css']
+  styleUrls: ['./reviews.component.css'],
 })
 export class ReviewsComponent implements OnInit {
   @Input() bootcamp: any;
@@ -16,10 +16,17 @@ export class ReviewsComponent implements OnInit {
   bootcampName: string;
   averageRating: number;
   photo: string;
+  state: string;
+  city: string;
+  zipcode: string;
+  careers: string[];
+  count: number;
+
   loggedInUserId: string;
 
   reviewEnabled: boolean = true;
   error: string = null;
+  careerList: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -52,7 +59,7 @@ export class ReviewsComponent implements OnInit {
       console.log('Inside ReviewsComponent ERROR ... ' + this.error);
       this.flashMessage.show(this.error, {
         cssClass: 'alert-danger',
-        timeout: 5000
+        timeout: 5000,
       });
       //this.router.navigate(['/']);
       const returnUrlx = localStorage.getItem('returnUrl');
@@ -62,7 +69,7 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit() {
     if (this.error === null) {
-      this._route.params.subscribe(params => {
+      this._route.params.subscribe((params) => {
         console.log('ReviewsComponent ngOnInit route.params ', params);
         this.bootcampId = params['bootcampId'];
         localStorage.setItem('returnUrl', `/reviews/${this.bootcampId}`);
@@ -77,13 +84,25 @@ export class ReviewsComponent implements OnInit {
         ? this.reviewsList['averageRating'].toFixed(1)
         : '';
       this.photo = this.reviewsList['photo'];
+      this.state = this.reviewsList['state'];
+      this.city = this.reviewsList['city'];
+      this.zipcode = this.reviewsList['zipcode'].substring(0, 5);
+      this.careers = this.reviewsList['careers'];
+      this.count = +this.reviewsList['count'];
+      this.careerList = '';
+      for (const j in this.careers) {
+        if (this.careers.hasOwnProperty(j)) {
+          this.careerList += this.careers[j] + ', ';
+        }
+      }
+      this.careerList = this.careerList.replace(/,\s*$/, '');
 
       this.reviews = this.reviewsList['data'];
       console.log('ReviewsComponent getReviews this.reviews = ', this.reviews);
       const userInfo =
         JSON.parse(this.authService.loadUserInfo()) || 'No user data';
       this.loggedInUserId = userInfo.id;
-      this.reviews.forEach(review => {
+      this.reviews.forEach((review) => {
         if (review.user._id === userInfo.id) {
           this.reviewEnabled = false;
         }
