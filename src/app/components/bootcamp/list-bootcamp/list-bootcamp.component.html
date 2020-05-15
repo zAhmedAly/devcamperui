@@ -103,24 +103,24 @@
       ></div> -->
 
       <!-- Perks -->
-      <div class="card">
+      <div class="card" *ngIf="bootcampCourses">
         <div class="card-header">
-          <h4 *ngIf="bootcampCourses">Perks Provided</h4>
+          <h5 class="mt-2">Perks Provided</h5>
         </div>
         <div class="card-body">
           <ul
-            class="list-group list-group-flush my-2"
+            class="list-group list-group-flush"
             style="border-style: none; margin-left: 2rem;"
           >
             <li
-              class="list-group-item"
+              class="list-group-item list-group-item-info"
               *ngIf="housing"
               style="border-style: none;"
             >
               <i class="fa fa-check text-success"></i> Housing
             </li>
             <li
-              class="list-group-item"
+              class="list-group-item list-group-item-info"
               *ngIf="!housing"
               style="border-style: none;"
             >

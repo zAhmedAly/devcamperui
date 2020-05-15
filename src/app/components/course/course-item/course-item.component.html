@@ -66,15 +66,25 @@
     <p class="card-text">
       {{ course.description }}
     </p>
-    <ul class="list-group">
-      <li class="list-group-item">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" style="border-style: none;">
         Cost: {{ course.tuition | currency: 'USD':true:'4.0' }}
       </li>
-      <li class="list-group-item">Skill Required: {{ course.minimumSkill }}</li>
-      <li class="list-group-item" *ngIf="course.scholarshipAvailable">
+      <li class="list-group-item" style="border-style: none;">
+        Skill Required: {{ course.minimumSkill }}
+      </li>
+      <li
+        class="list-group-item"
+        style="border-style: none;"
+        *ngIf="course.scholarshipAvailable"
+      >
         Scholarship Available: <i class="fa fa-check text-success"></i>
       </li>
-      <li class="list-group-item" *ngIf="!course.scholarshipAvailable">
+      <li
+        class="list-group-item"
+        style="border-style: none;"
+        *ngIf="!course.scholarshipAvailable"
+      >
         Scholarship Available:
         <i class="fa fa-times text-danger" aria-hidden="true"></i>
       </li>
