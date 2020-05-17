@@ -1,8 +1,9 @@
 <section class="container">
-  <a [routerLink]="['/list-bootcamp', bootcampId]" class="btn btn-link mb-2"
-    ><i class="fa fa-chevron-left mr-2"></i>Bootcamp Info</a
-  >
-
+  <div class="col-md-12">
+    <a [routerLink]="['/list-bootcamp', bootcampId]" class="btn btn-link mb-2"
+      ><i class="fa fa-chevron-left mr-2"></i>Bootcamp Info</a
+    >
+  </div>
   <h4 class="my-2"><strong>Manage Bootcamp</strong></h4>
   <app-bootcamp-item [bootcamp]="bootcamp"> </app-bootcamp-item>
 
@@ -33,7 +34,9 @@
               value="Upload Image"
             />
           </form>
-          <a href="add-bootcamp.html" class="btn btn-success btn-block"
+          <a
+            [routerLink]="['/upd-bootcamp', bootcamp.id]"
+            class="btn btn-success btn-block"
             >Edit Bootcamp Details</a
           >
 
