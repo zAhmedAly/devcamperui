@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
+import {
+  Router,
+  ActivatedRoute,
+  RouterStateSnapshot,
+  ActivatedRouteSnapshot,
+} from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { BootcampsService } from 'app/services/bootcamps.service';
+import { delay, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +26,8 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private bootcampsService: BootcampsService
   ) {}
 
   ngOnInit() {
@@ -75,6 +84,7 @@ export class LoginComponent implements OnInit {
           email: data.result.email,
           role: data.result.role,
         };
+
         this.authService.storeUserData(token, user);
         const returnUrlx = localStorage.getItem('returnUrl');
         console.log('onLoginSubmit authenticateUser returnUrlx = ', returnUrlx);
@@ -87,6 +97,25 @@ export class LoginComponent implements OnInit {
         //   cssClass: 'alert-success',
         //   timeout: 3000
         // });
+
+        this.bootcampsService.getBootcampUserId(user.id).subscribe(
+          (result) => {
+            if (
+              result.success &&
+              this.authService.getUserRole() === 'publisher'
+            ) {
+              console.log('XXXXXX getBootcampUserId = ', result.data);
+              this.router.navigate(['/manage-bootcamp/' + result.data]);
+            } else {
+              console.log('YYYYYY No bootcamp = ', result);
+            }
+          },
+          (error) => {
+            console.log('YYYYYY No bootcamp = ', error);
+            this.router.navigate(['/bootcamps']);
+          }
+        );
+
         setTimeout(() => {
           console.log('Inside LoginComponent setTimeout ... Auto Logout');
 

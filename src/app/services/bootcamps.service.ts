@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BootcampsService {
   private apiUrl = environment.apiUrl;
@@ -32,6 +32,12 @@ export class BootcampsService {
   getBootcamp(bootcampId: string): Observable<any> {
     return this.http
       .get(`${this.apiUrl}/bootcamps/${bootcampId}`)
+      .pipe(timeout(10000), catchError(this.handleError));
+  }
+
+  getBootcampUserId(userId: string): Observable<any> {
+    return this.http
+      .get(`${this.apiUrl}/bootcamps/user/${userId}`)
       .pipe(timeout(10000), catchError(this.handleError));
   }
 
